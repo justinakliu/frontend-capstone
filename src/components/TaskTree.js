@@ -30,25 +30,31 @@ const createGoalAPI = (goalData) => {
     });
 };
 
-// const deleteGoalAPI = () => {};
+const deleteGoalAPI = (id) => {
+  return axios
+    .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-// const updateGoalCompleteAPI = () => {};
+const updateGoalCompleteAPI = () => {};
 
 // needs to know the parent goal id to know which goal tree to display
 // so maybe this component needs to take in tree?
-function TaskTree() {
+function TaskTree({ goalTreeId }) {
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 
   const getGoalTree = (id) => {
-    return getGoalTreeAPI(id).then((data) => {
+    return getGoalTreeAPI(goalTreeId).then((data) => {
       setTree(data);
     });
   };
 
   useEffect(() => {
-    getGoalTree(2); //hard-coded
-  }, []);
+    getGoalTree(); //hard-coded
+  }, []); // why underlined?
 
   const close = () => setNode(undefined);
 
@@ -61,20 +67,20 @@ function TaskTree() {
     };
     createGoalAPI(requestBody);
     close();
-    getGoalTree(2);
+    getGoalTree(goalTreeId);
   };
 
-  // const handleCatSubmit = (data) => {
-  //   // call api, with data that comes back, update cat data with cat
-  //   addNewCatApi(data)
-  //     .then((newCat) => {
-  //       setCatData([newCat, ...catData]);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
+  // should i chain this?
+  const deleteGoal = (id) => {
+    deleteGoalAPI(id);
+    getGoalTree(goalTreeId);
+  };
 
-  // in actual function, just add to database
-  // the get taskData again
+  // should i chain?
+  const updateGoalComplete = (id) => {
+    updateGoalCompleteAPI(id);
+    getGoalTree(goalTreeId);
+  };
 
   return (
     <Box w="100vw" h="100vh">
