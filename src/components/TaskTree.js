@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Tree from "react-d3-tree";
 import { Box } from "@chakra-ui/react";
 import axios from "axios";
@@ -46,15 +46,16 @@ function TaskTree({ goalTreeId }) {
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 
-  const getGoalTree = (id) => {
+  const getGoalTree = useCallback(() => {
     return getGoalTreeAPI(goalTreeId).then((data) => {
+      console.log(data);
       setTree(data);
     });
-  };
+  }, [goalTreeId]);
 
   useEffect(() => {
     getGoalTree(); //hard-coded
-  }, []); // why underlined?
+  }, [getGoalTree]); // why underlined?
 
   const close = () => setNode(undefined);
 
@@ -86,7 +87,10 @@ function TaskTree({ goalTreeId }) {
     <Box w="100vw" h="100vh">
       <Tree
         data={tree}
-        onNodeClick={(datum) => setNode(datum)}
+        onNodeClick={(datum) => {
+          setNode(datum);
+          console.log(datum);
+        }}
         translate={{ x: 300, y: 300 }}
         collapsible={false}
         orientation={"vertical"}

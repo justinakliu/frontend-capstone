@@ -1,11 +1,11 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
-import TaskTree from "./components/TaskTree.js";
+import TaskList from "./components/TaskList.js";
 
 function App() {
   return (
     <ChakraProvider>
-      <TaskTree />
+      <TaskList />
     </ChakraProvider>
   );
 }
