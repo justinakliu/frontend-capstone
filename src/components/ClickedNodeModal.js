@@ -5,20 +5,35 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/modal";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 // import PropTypes from "prop-types";
 
-function AddNodeModal({ isOpen, onClose, onSubmit }) {
+function ClickedNodeModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  onDelete,
+  onUpdateComplete,
+  clickedNode,
+}) {
   const [name, setName] = useState("");
+
+  const getUpdateButtonText = () => {
+    if (clickedNode) {
+      console.log(Boolean(clickedNode.data.complete));
+      return `Mark Node ${
+        Boolean(clickedNode.data.complete) ? "Incomplete" : "Complete"
+      }`;
+    }
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} onSubmit={onSubmit}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add Subgoal</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
@@ -28,14 +43,21 @@ function AddNodeModal({ isOpen, onClose, onSubmit }) {
               onChange={(event) => setName(event.target.value)}
             />
           </FormControl>
-        </ModalBody>
-        <ModalFooter>
           <Button
             colorScheme="blue"
             onClick={() => onSubmit(name)}
             disabled={!name}
           >
-            Add
+            Add Subgoal to Node
+          </Button>
+        </ModalBody>
+        <ModalFooter>
+          {/* maybe change this to drop down select or buttons or check marks */}
+          <Button colorScheme="orange" onClick={() => onUpdateComplete()}>
+            {getUpdateButtonText()}
+          </Button>
+          <Button colorScheme="red" onClick={() => onDelete()}>
+            Delete Node
           </Button>
         </ModalFooter>
       </ModalContent>
@@ -43,10 +65,12 @@ function AddNodeModal({ isOpen, onClose, onSubmit }) {
   );
 }
 
+// the first submit doesn't work for some reason  ??
+
 // AddNodeModal.propTypes = {
 //   isOpen: PropTypes.bool.isRequired,
 //   onClose: PropTypes.func.isRequired,
 //   onSubmit: PropTypes.func.isRequired,
 // };
 
-export default AddNodeModal;
+export default ClickedNodeModal;
