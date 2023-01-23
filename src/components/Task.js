@@ -1,18 +1,24 @@
-// get leaf nodes
+import React from "react";
 import PropTypes from "prop-types";
+import { Flex, Box, Heading, Spacer, Button } from "@chakra-ui/react";
 
-function Task(props) {
+const Task = (props) => {
   return (
-    <li>
-      <h3>{props.name}</h3>
-      <button>Is Complete = {props.complete}</button>
-    </li>
+    <Flex minWidth="max-content" alignItems="center" gap="2">
+      <Box p="2">
+        <Heading size="md"> {props.name}</Heading>
+      </Box>
+      <Spacer />
+      <Button onClick={() => {}}>x</Button>
+    </Flex>
   );
-}
+};
 
 export default Task;
 
 Task.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   complete: PropTypes.bool.isRequired,
+  onSetComplete: PropTypes.func.isRequired,
 };

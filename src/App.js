@@ -30,7 +30,7 @@ const createGoalAPI = (goalData) => {
 function App() {
   const [rootGoals, setRootGoals] = useState([]);
   const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
-  const [listView, setListView] = useState(false);
+  const [listView, setListView] = useState(true);
 
   const getRootGoals = () => {
     getRootGoalsAPI().then((data) => {
