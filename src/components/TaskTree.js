@@ -3,6 +3,7 @@ import Tree from "react-d3-tree";
 import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import ClickedNodeModal from "./ClickedNodeModal";
+import "./Tree.css";
 
 const getGoalTreeAPI = (id) => {
   return axios
@@ -49,9 +50,39 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 
+  // seems like everything is getting assigned "complete" class and the
+
+  // how do you work around this without writing a function?
+  const renderSvgNode = ({ nodeDatum, onNodeClick }) => {
+    const getCompleteClass = (nodeDatum) => {
+      if (nodeDatum === undefined) {
+        return "";
+      } else {
+        console.log(nodeDatum.complete);
+        return nodeDatum.complete ? "complete" : "";
+      }
+    };
+    return (
+      <g>
+        <circle
+          r="30"
+          onClick={onNodeClick}
+          className={getCompleteClass(nodeDatum)}
+        />
+        <text fill="black" strokeWidth="1" x="20">
+          {nodeDatum.name}
+        </text>
+        {/* {nodeDatum.data?.complete && (
+          <text fill="black" x="20" dy="20" strokeWidth="1">
+            Complete: {nodeDatum.data?.complete ? "yes" : "no"}
+          </text>
+        )} */}
+      </g>
+    );
+  };
+
   const getGoalTree = useCallback(() => {
     return getGoalTreeAPI(goalTreeId).then((data) => {
-      console.log(data);
       setTree(data);
     });
   }, [goalTreeId]);
@@ -62,7 +93,6 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
 
   const close = () => {
     setNode(undefined);
-    console.log("closed");
   };
 
   const handleCreateGoalSubmit = (name) => {
@@ -104,6 +134,7 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
         translate={{ x: 300, y: 300 }}
         collapsible={false}
         orientation={"vertical"}
+        renderCustomNodeElement={renderSvgNode}
       />
       <ClickedNodeModal
         isOpen={Boolean(node)}

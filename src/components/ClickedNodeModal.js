@@ -21,6 +21,12 @@ function ClickedNodeModal({
 }) {
   const [name, setName] = useState("");
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(name);
+    setName("");
+  };
+
   const getUpdateButtonText = () => {
     if (clickedNode) {
       console.log(Boolean(clickedNode.data.complete));
@@ -43,11 +49,7 @@ function ClickedNodeModal({
               onChange={(event) => setName(event.target.value)}
             />
           </FormControl>
-          <Button
-            colorScheme="blue"
-            onClick={() => onSubmit(name)}
-            disabled={!name}
-          >
+          <Button colorScheme="blue" onClick={handleSubmit} disabled={!name}>
             Add Subgoal to Node
           </Button>
         </ModalBody>

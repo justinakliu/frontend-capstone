@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Select } from "@chakra-ui/react";
+import { Select, Menu, Box, Flex } from "@chakra-ui/react";
 import TaskTree from "./components/TaskTree.js";
 import axios from "axios";
 import AddNodeModal from "./components/AddNodeModal.js";
@@ -38,18 +38,22 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Select
-        placeholder="Select a Goal"
-        onChange={(event) => {
-          setSelectedRootGoalId(event.target.value);
-        }}
-      >
-        {rootGoals.map((rootGoal) => {
-          return <option value={rootGoal.id}>{rootGoal.name}</option>;
-        })}
-      </Select>
-      <button>Add Goal</button>
-      <button>Tree / List</button>
+      <Box pos="absolute" top="0" left="0" w="100vw" h="60px" bg="tomato">
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Select
+            placeholder="Select a Goal"
+            onChange={(event) => {
+              setSelectedRootGoalId(event.target.value);
+            }}
+          >
+            {rootGoals.map((rootGoal) => {
+              return <option value={rootGoal.id}>{rootGoal.name}</option>;
+            })}
+          </Select>
+          <button>Add Goal</button>
+          <button>Tree / List</button>
+        </Box>
+      </Box>
       {selectedRootGoalId ? (
         <TaskTree
           goalTreeId={selectedRootGoalId}

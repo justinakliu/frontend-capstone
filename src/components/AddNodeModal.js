@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/modal";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-// import PropTypes from "prop-types";
 
 function AddNodeModal({ isOpen, onClose, onSubmit }) {
   const [name, setName] = useState("");
