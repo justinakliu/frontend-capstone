@@ -6,6 +6,11 @@ import TaskList from "./components/TaskTree.js";
 import axios from "axios";
 import AddNodeModal from "./components/AddNodeModal.js";
 
+const LEAVES = [
+  { id: 1, name: "write resume", complete: false },
+  { id: 2, name: "apply to job", complete: false },
+];
+
 const getRootGoalsAPI = () => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/roots`)
@@ -85,7 +90,7 @@ function App() {
           handleDeleteRootNode={handleDeleteRootNode}
         />
       )}
-      {listView && Boolean(selectedRootGoalId) && <TaskList />}
+      {listView && <TaskList leafGoals={LEAVES} onSetComplete={() => {}} />}
     </ChakraProvider>
   );
 }

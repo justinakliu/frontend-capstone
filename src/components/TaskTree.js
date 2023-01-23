@@ -72,11 +72,6 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
         <text fill="black" strokeWidth="1" x="20">
           {nodeDatum.name}
         </text>
-        {/* {nodeDatum.data?.complete && (
-          <text fill="black" x="20" dy="20" strokeWidth="1">
-            Complete: {nodeDatum.data?.complete ? "yes" : "no"}
-          </text>
-        )} */}
       </g>
     );
   };

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/modal";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function ClickedNodeModal({
   isOpen,
@@ -54,10 +54,10 @@ function ClickedNodeModal({
           </Button>
         </ModalBody>
         <ModalFooter>
-          {/* maybe change this to drop down select or buttons or check marks */}
           <Button colorScheme="orange" onClick={() => onUpdateComplete()}>
             {getUpdateButtonText()}
           </Button>
+
           <Button colorScheme="red" onClick={() => onDelete()}>
             Delete Node
           </Button>
@@ -67,12 +67,10 @@ function ClickedNodeModal({
   );
 }
 
-// the first submit doesn't work for some reason  ??
-
-// AddNodeModal.propTypes = {
-//   isOpen: PropTypes.bool.isRequired,
-//   onClose: PropTypes.func.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-// };
+ClickedNodeModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default ClickedNodeModal;
