@@ -65,7 +65,7 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
     return (
       <g>
         <circle
-          r="30"
+          r="15"
           onClick={onNodeClick}
           className={getCompleteClass(nodeDatum)}
         />
