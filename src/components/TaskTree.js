@@ -135,6 +135,7 @@ function TaskTree({ goalTreeId }) {
         collapsible={false}
         orientation={"vertical"}
         renderCustomNodeElement={renderSvgNode}
+        separation={{ nonSiblings: 2, siblings: 2 }}
       />
 
       <ClickedNodeModal
