@@ -5,6 +5,7 @@ import axios from "axios";
 import ClickedNodeModal from "./ClickedNodeModal";
 import "./Tree.css";
 
+// lift up
 const getGoalTreeAPI = (id) => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}/tree`)
@@ -16,6 +17,7 @@ const getGoalTreeAPI = (id) => {
     });
 };
 
+// lift up
 const createGoalAPI = (goalData) => {
   console.log(goalData);
   return axios
@@ -25,6 +27,7 @@ const createGoalAPI = (goalData) => {
     });
 };
 
+// lift up
 const deleteGoalAPI = (id) => {
   return axios
     .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
@@ -33,6 +36,7 @@ const deleteGoalAPI = (id) => {
     });
 };
 
+// lift up
 const updateGoalCompleteAPI = (goal) => {
   const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
   return axios
@@ -46,7 +50,8 @@ const updateGoalCompleteAPI = (goal) => {
 
 // needs to know the parent goal id to know which goal tree to display
 // so maybe this component needs to take in tree?
-function TaskTree({ goalTreeId, handleRootNodeDelete }) {
+function TaskTree({ goalTreeId }) {
+  // lift up
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 
@@ -131,6 +136,7 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
         orientation={"vertical"}
         renderCustomNodeElement={renderSvgNode}
       />
+
       <ClickedNodeModal
         isOpen={Boolean(node)}
         onClose={close}
@@ -138,7 +144,6 @@ function TaskTree({ goalTreeId, handleRootNodeDelete }) {
         clickedNode={node}
         onDelete={deleteGoal}
         onUpdateComplete={updateGoalComplete}
-        handleRootNodeDelete={handleRootNodeDelete}
       />
     </Box>
   );

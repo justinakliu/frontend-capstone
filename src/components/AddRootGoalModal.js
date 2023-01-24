@@ -11,13 +11,13 @@ import {
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-function AddNodeModal({ isOpen, onClose, onSubmit }) {
+function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
   const [name, setName] = useState("");
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add Subgoal</ModalHeader>
+        <ModalHeader>Create Goal</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
@@ -48,4 +48,4 @@ function AddNodeModal({ isOpen, onClose, onSubmit }) {
 //   onSubmit: PropTypes.func.isRequired,
 // };
 
-export default AddNodeModal;
+export default AddRootGoalModal;

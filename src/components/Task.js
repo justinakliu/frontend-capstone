@@ -6,7 +6,10 @@ const Task = (props) => {
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">
       <Box p="2">
-        <Heading size="md"> {props.name}</Heading>
+        <Heading size="md">
+          {" "}
+          <h2>{props.name}</h2>
+        </Heading>
       </Box>
       <Spacer />
       <Button onClick={() => {}}>x</Button>

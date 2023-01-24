@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Select, Menu, Box, Flex, Button } from "@chakra-ui/react";
 import TaskTree from "./components/TaskTree.js";
-import TaskList from "./components/TaskTree.js";
+import TaskList from "./components/TaskList.js";
+import AddRootGoalModal from "./components/AddRootGoalModal.js";
+
 import axios from "axios";
-import AddNodeModal from "./components/AddNodeModal.js";
 
 const LEAVES = [
   { id: 1, name: "write resume", complete: false },
@@ -35,11 +36,11 @@ const createGoalAPI = (goalData) => {
 function App() {
   const [rootGoals, setRootGoals] = useState([]);
   const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
-  const [listView, setListView] = useState(true);
+  const [listView, setListView] = useState(false);
+  const [isRootModalOpen, setIsRootModalOpen] = useState(false);
 
   const getRootGoals = () => {
     getRootGoalsAPI().then((data) => {
-      console.log(data);
       setRootGoals(data);
     });
   };
@@ -56,6 +57,10 @@ function App() {
   const addRootGoal = (name) => {
     const requestBody = { title: name, description: "whatever" };
     return createGoalAPI(requestBody).then((result) => {
+      console.log(result);
+      setIsRootModalOpen(false);
+      // need to refactor backend to return the created goal
+      // set selectedNodeRoot node
       return getRootGoals();
     });
   };
@@ -74,7 +79,9 @@ function App() {
               return <option value={rootGoal.id}>{rootGoal.name}</option>;
             })}
           </Select>
-          <Button onClick={addRootGoal}>Create New Goal Tree</Button>
+          <Button onClick={() => setIsRootModalOpen(true)}>
+            Create New Goal Tree
+          </Button>
           <Button
             onClick={() => {
               setListView(!listView);
@@ -85,12 +92,14 @@ function App() {
         </Box>
       </Box>
       {!listView && Boolean(selectedRootGoalId) && (
-        <TaskTree
-          goalTreeId={selectedRootGoalId}
-          handleDeleteRootNode={handleDeleteRootNode}
-        />
+        <TaskTree goalTreeId={selectedRootGoalId} />
       )}
       {listView && <TaskList leafGoals={LEAVES} onSetComplete={() => {}} />}
+      <AddRootGoalModal
+        isOpen={isRootModalOpen}
+        onClose={() => setIsRootModalOpen(false)}
+        onSubmit={addRootGoal}
+      />
     </ChakraProvider>
   );
 }

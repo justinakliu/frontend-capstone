@@ -28,8 +28,7 @@ function ClickedNodeModal({
   };
 
   const getUpdateButtonText = () => {
-    if (clickedNode) {
-      console.log(Boolean(clickedNode.data.complete));
+    if (clickedNode !== undefined) {
       return `Mark Node ${
         Boolean(clickedNode.data.complete) ? "Incomplete" : "Complete"
       }`;
@@ -43,7 +42,7 @@ function ClickedNodeModal({
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
-            <FormLabel>Name</FormLabel>
+            <FormLabel>Add Subgoal</FormLabel>
             <Input
               value={name}
               onChange={(event) => setName(event.target.value)}
