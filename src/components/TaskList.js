@@ -44,8 +44,7 @@ function TaskList({ goalId, updateGoalComplete }) {
       >
         {list.map((subgoal) => (
           <Task
-            name={subgoal.name}
-            complete={subgoal.complete}
+            subgoal={subgoal}
             handleUpdateGoalComplete={handleUpdateGoalComplete}
           />
         ))}
