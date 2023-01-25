@@ -52,7 +52,6 @@ const getGoalTreeAPI = (id) => {
 // needs to know the parent goal id to know which goal tree to display
 // so maybe this component needs to take in tree?
 function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
-  // lift up
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 

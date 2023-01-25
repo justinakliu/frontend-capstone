@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import Task from "./Task";
 import { VStack, StackDivider } from "@chakra-ui/react";
+import { useEffect, useState, useCallback } from "react";
 
 import axios from "axios";
 
 const getLeafGoalsAPI = (id) => {
   return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/${id}/leaves`)
+    .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}/leaves`)
     .then((response) => {
       return response.data;
     })
@@ -15,35 +16,47 @@ const getLeafGoalsAPI = (id) => {
     });
 };
 
-function TaskList(props) {
+function TaskList({ goalId, updateGoalComplete }) {
+  const [list, setList] = useState([]);
+
+  const getList = useCallback(() => {
+    return getLeafGoalsAPI(goalId).then((data) => {
+      setList(data);
+    });
+  }, [goalId]);
+
+  useEffect(() => {
+    getList(); //hard-coded
+  }, [getList]); // why underlined?
+
+  const handleUpdateGoalComplete = (nodeData) => {
+    return updateGoalComplete(nodeData).then((result) => {
+      return getList();
+    });
+  };
+
   return (
-    // add state
     <>
       <VStack
         divider={<StackDivider borderColor="gray.200" />}
         spacing={4}
         align="stretch"
       >
-        {props.leafGoals.map((subgoal) => (
-          <Task name={subgoal.name} complete={subgoal.complete} />
+        {list.map((subgoal) => (
+          <Task
+            name={subgoal.name}
+            complete={subgoal.complete}
+            handleUpdateGoalComplete={handleUpdateGoalComplete}
+          />
         ))}
       </VStack>
     </>
   );
 }
 
-// TaskList.propTypes = {
-//   leafGoals: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       name: PropTypes.string.isRequired,
-//       complete: PropTypes.bool,
-//       parent_id: PropTypes.number,
-//       children: PropTypes.array,
-//       description: PropTypes.string,
-//     })
-//   ).isRequired,
-//   onSetComplete: PropTypes.func.isRequired,
-// };
+TaskList.propTypes = {
+  goalId: PropTypes.string.isRequired,
+  handleUpdateGoalComplete: PropTypes.func.isRequired,
+};
 
 export default TaskList;

@@ -23,5 +23,5 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   complete: PropTypes.bool.isRequired,
-  onSetComplete: PropTypes.func.isRequired,
+  handleUpdateGoalComplete: PropTypes.func.isRequired,
 };

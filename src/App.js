@@ -136,7 +136,10 @@ function App() {
         />
       )}
       {listView && (
-        <TaskList goalId={selectedRootGoalId} onSetComplete={() => {}} />
+        <TaskList
+          goalId={selectedRootGoalId}
+          updateGoalComplete={updateGoalComplete}
+        />
       )}
       <AddRootGoalModal
         isOpen={isRootModalOpen}
