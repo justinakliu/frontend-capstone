@@ -13,17 +13,17 @@ import PropTypes from "prop-types";
 
 function ClickedNodeModal({
   isOpen,
-  onClose,
-  onSubmit,
-  onDelete,
-  onUpdateComplete,
   clickedNode,
+  closeClickedGoalModal,
+  handleAddSubgoal,
+  handleDeleteGoal,
+  handleUpdateGoalComplete,
 }) {
   const [name, setName] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleAddSubgoalSubmit = (event) => {
     event.preventDefault();
-    onSubmit(name);
+    handleAddSubgoal(name);
     setName("");
   };
 
@@ -36,7 +36,11 @@ function ClickedNodeModal({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} onSubmit={onSubmit}>
+    <Modal
+      isOpen={isOpen}
+      onClose={closeClickedGoalModal}
+      onSubmit={handleAddSubgoal}
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
@@ -48,16 +52,23 @@ function ClickedNodeModal({
               onChange={(event) => setName(event.target.value)}
             />
           </FormControl>
-          <Button colorScheme="blue" onClick={handleSubmit} disabled={!name}>
+          <Button
+            colorScheme="blue"
+            onClick={handleAddSubgoalSubmit}
+            disabled={!name}
+          >
             Add Subgoal to Node
           </Button>
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="orange" onClick={() => onUpdateComplete()}>
+          <Button
+            colorScheme="orange"
+            onClick={() => handleUpdateGoalComplete()}
+          >
             {getUpdateButtonText()}
           </Button>
 
-          <Button colorScheme="red" onClick={() => onDelete()}>
+          <Button colorScheme="red" onClick={() => handleDeleteGoal()}>
             Delete Node
           </Button>
         </ModalFooter>
@@ -68,8 +79,11 @@ function ClickedNodeModal({
 
 ClickedNodeModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  // how to add clickedNode data type? shapeof?
+  closeClickedGoalModal: PropTypes.func.isRequired,
+  handleAddSubgoal: PropTypes.func.isRequired,
+  handleDeleteGoal: PropTypes.func.isRequired,
+  handleUpdateGoalComplete: PropTypes.func.isRequired,
 };
 
 export default ClickedNodeModal;

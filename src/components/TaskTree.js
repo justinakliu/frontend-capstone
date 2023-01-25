@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import ClickedNodeModal from "./ClickedNodeModal";
 import "./Tree.css";
+import PropTypes from "prop-types";
 
 // lift up ???
 const getGoalTreeAPI = (id) => {
@@ -18,44 +19,42 @@ const getGoalTreeAPI = (id) => {
 };
 
 // lift up
-const createGoalAPI = (goalData) => {
-  console.log(goalData);
-  return axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}/goals`, goalData)
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const createGoalAPI = (goalData) => {
+//   console.log(goalData);
+//   return axios
+//     .post(`${process.env.REACT_APP_BACKEND_URL}/goals`, goalData)
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 // lift up
-const deleteGoalAPI = (id) => {
-  return axios
-    .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
-    .catch((error) => {
-      console.log(error);
-    });
-};
+// const deleteGoalAPI = (id) => {
+//   return axios
+//     .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
 // lift up
-const updateGoalCompleteAPI = (goal) => {
-  const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
-  return axios
-    .patch(
-      `${process.env.REACT_APP_BACKEND_URL}/goals/${goal.id}/${requested_change}`
-    )
-    .catch((error) => {
-      console.log(error);
-    });
-};
+// const updateGoalCompleteAPI = (goal) => {
+//   const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
+//   return axios
+//     .patch(
+//       `${process.env.REACT_APP_BACKEND_URL}/goals/${goal.id}/${requested_change}`
+//     )
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
 // needs to know the parent goal id to know which goal tree to display
 // so maybe this component needs to take in tree?
-function TaskTree({ goalTreeId }) {
+function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   // lift up
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
-
-  // seems like everything is getting assigned "complete" class and the
 
   // how do you work around this without writing a function?
   const renderSvgNode = ({ nodeDatum, onNodeClick }) => {
@@ -82,47 +81,38 @@ function TaskTree({ goalTreeId }) {
   };
 
   const getGoalTree = useCallback(() => {
-    return getGoalTreeAPI(goalTreeId).then((data) => {
+    return getGoalTreeAPI(goalId).then((data) => {
       setTree(data);
     });
-  }, [goalTreeId]);
+  }, [goalId]);
 
   useEffect(() => {
     getGoalTree(); //hard-coded
   }, [getGoalTree]); // why underlined?
 
-  const close = () => {
+  const closeClickedGoalModal = () => {
     setNode(undefined);
   };
 
   // lift up
-  const handleCreateGoalSubmit = (name) => {
-    const requestBody = {
-      parent_id: node.data.id,
-      title: name,
-      description: "whatever",
-    };
-    return createGoalAPI(requestBody).then((result) => {
-      close();
-      console.log("closed");
-      getGoalTree();
-    });
-  };
-
-  // should i chain this?
-  // lift up
-  const deleteGoal = () => {
-    return deleteGoalAPI(node.data.id).then((result) => {
-      close();
+  const handleAddSubgoal = (subgoalTitle) => {
+    const parentId = node.data.id;
+    return addGoal(subgoalTitle, parentId).then((result) => {
+      closeClickedGoalModal();
       return getGoalTree();
     });
   };
 
-  // should i chain?
-  // lift up
-  const updateGoalComplete = () => {
-    return updateGoalCompleteAPI(node.data).then((result) => {
-      close();
+  const handleDeleteGoal = () => {
+    return deleteGoal(node.data.id).then((result) => {
+      closeClickedGoalModal();
+      return getGoalTree();
+    });
+  };
+
+  const handleUpdateGoalComplete = () => {
+    return updateGoalComplete(node.data).then((result) => {
+      closeClickedGoalModal();
       return getGoalTree();
     });
   };
@@ -143,14 +133,21 @@ function TaskTree({ goalTreeId }) {
 
       <ClickedNodeModal
         isOpen={Boolean(node)}
-        onClose={close}
-        onSubmit={handleCreateGoalSubmit}
         clickedNode={node}
-        onDelete={deleteGoal}
-        onUpdateComplete={updateGoalComplete}
+        closeClickedGoalModal={closeClickedGoalModal}
+        handleAddSubgoal={handleAddSubgoal}
+        handleDeleteGoal={handleDeleteGoal}
+        handleUpdateGoalComplete={handleUpdateGoalComplete}
       />
     </Box>
   );
 }
 
 export default TaskTree;
+
+TaskTree.propTypes = {
+  goalId: PropTypes.string.isRequired,
+  addGoal: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
+  updateGoalComplete: PropTypes.func.isRequired,
+};

@@ -28,6 +28,26 @@ const createGoalAPI = (goalData) => {
     });
 };
 
+const deleteGoalAPI = (id) => {
+  return axios
+    .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// rename
+const updateGoalCompleteAPI = (goal) => {
+  const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
+  return axios
+    .patch(
+      `${process.env.REACT_APP_BACKEND_URL}/goals/${goal.id}/${requested_change}`
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 function App() {
   const [rootGoals, setRootGoals] = useState([]);
   const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
@@ -50,13 +70,34 @@ function App() {
   };
 
   const addRootGoal = (name) => {
-    const requestBody = { title: name, description: "whatever" };
+    const requestBody = { title: name };
     return createGoalAPI(requestBody).then((result) => {
-      console.log(result);
       setIsRootModalOpen(false);
       // need to refactor backend to return the created goal
       // set selectedNodeRoot node
       return getRootGoals();
+    });
+  };
+
+  const addSubgoal = (title, parentId) => {
+    const requestBody = {
+      parent_id: parentId,
+      title: title,
+    };
+    return createGoalAPI(requestBody).then((result) => {
+      return result;
+    });
+  };
+
+  const deleteGoal = (goalId) => {
+    return deleteGoalAPI(goalId).then((result) => {
+      return result;
+    });
+  };
+
+  const updateGoalComplete = (goalData) => {
+    return updateGoalCompleteAPI(goalData).then((result) => {
+      return result;
     });
   };
 
@@ -87,7 +128,12 @@ function App() {
         </Box>
       </Box>
       {!listView && Boolean(selectedRootGoalId) && (
-        <TaskTree goalTreeId={selectedRootGoalId} />
+        <TaskTree
+          goalId={selectedRootGoalId}
+          addGoal={addSubgoal}
+          deleteGoal={deleteGoal}
+          updateGoalComplete={updateGoalComplete}
+        />
       )}
       {listView && (
         <TaskList goalId={selectedRootGoalId} onSetComplete={() => {}} />
