@@ -7,11 +7,6 @@ import AddRootGoalModal from "./components/AddRootGoalModal.js";
 
 import axios from "axios";
 
-const LEAVES = [
-  { id: 1, name: "write resume", complete: false },
-  { id: 2, name: "apply to job", complete: false },
-];
-
 const getRootGoalsAPI = () => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/roots`)
@@ -94,7 +89,9 @@ function App() {
       {!listView && Boolean(selectedRootGoalId) && (
         <TaskTree goalTreeId={selectedRootGoalId} />
       )}
-      {listView && <TaskList leafGoals={LEAVES} onSetComplete={() => {}} />}
+      {listView && (
+        <TaskList goalId={selectedRootGoalId} onSetComplete={() => {}} />
+      )}
       <AddRootGoalModal
         isOpen={isRootModalOpen}
         onClose={() => setIsRootModalOpen(false)}

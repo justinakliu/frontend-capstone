@@ -5,7 +5,7 @@ import axios from "axios";
 import ClickedNodeModal from "./ClickedNodeModal";
 import "./Tree.css";
 
-// lift up
+// lift up ???
 const getGoalTreeAPI = (id) => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}/tree`)
@@ -95,6 +95,7 @@ function TaskTree({ goalTreeId }) {
     setNode(undefined);
   };
 
+  // lift up
   const handleCreateGoalSubmit = (name) => {
     const requestBody = {
       parent_id: node.data.id,
@@ -109,6 +110,7 @@ function TaskTree({ goalTreeId }) {
   };
 
   // should i chain this?
+  // lift up
   const deleteGoal = () => {
     return deleteGoalAPI(node.data.id).then((result) => {
       close();
@@ -117,6 +119,7 @@ function TaskTree({ goalTreeId }) {
   };
 
   // should i chain?
+  // lift up
   const updateGoalComplete = () => {
     return updateGoalCompleteAPI(node.data).then((result) => {
       close();
