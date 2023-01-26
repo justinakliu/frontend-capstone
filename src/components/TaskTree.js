@@ -123,7 +123,7 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
         onNodeClick={(datum) => {
           setNode(datum);
         }}
-        translate={{ x: 300, y: 300 }}
+        translate={{ x: 960, y: 200 }}
         collapsible={false}
         orientation={"vertical"}
         renderCustomNodeElement={renderSvgNode}

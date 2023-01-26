@@ -110,9 +110,10 @@ function App() {
         align="center"
         justify="space-between"
         padding={6}
-        bg="blue.200"
+        bg="blue.100"
       >
         <Select
+          bg="gray.100"
           maxW="lg"
           placeholder="Select a Goal"
           onChange={(event) => {
