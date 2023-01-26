@@ -13,6 +13,13 @@ import React, { useState } from "react";
 
 function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
   const [name, setName] = useState("");
+
+  const handleAddRootGoalSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(name);
+    setName("");
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -31,7 +38,7 @@ function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
         <ModalFooter>
           <Button
             colorScheme="blue"
-            onClick={() => onSubmit(name)}
+            onClick={handleAddRootGoalSubmit}
             disabled={!name}
           >
             Add

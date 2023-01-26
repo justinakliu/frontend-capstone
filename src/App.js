@@ -147,7 +147,7 @@ function App() {
           updateGoalComplete={updateGoalComplete}
         />
       )}
-      {listView && (
+      {listView && Boolean(selectedRootGoalId) && (
         <TaskList
           goalId={selectedRootGoalId}
           updateGoalComplete={updateGoalComplete}
