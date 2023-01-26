@@ -10,9 +10,7 @@ const Task = ({ subgoal, handleUpdateGoalComplete }) => {
       gap="2"
       bg={subgoal.complete ? "grey" : "white"}
     >
-      <Box p="2">
-        <Heading size="md">{subgoal.name}</Heading>
-      </Box>
+      <Box p="2">{subgoal.name}</Box>
       <Spacer />
       <Button onClick={() => handleUpdateGoalComplete(subgoal)}>
         Mark {subgoal.complete ? "Incomplete" : "Complete"}

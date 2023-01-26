@@ -41,6 +41,12 @@ function TaskList({ goalId, updateGoalComplete }) {
         divider={<StackDivider borderColor="gray.200" />}
         spacing={4}
         align="stretch"
+        ml={20}
+        mr={20}
+        mt={10}
+        mb={10}
+        // ml="15%"
+        // mr="15%"
       >
         {list.map((subgoal) => (
           <Task
