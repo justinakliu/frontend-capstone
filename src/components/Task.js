@@ -8,7 +8,7 @@ const Task = ({ subgoal, handleUpdateGoalComplete }) => {
       minWidth="max-content"
       alignItems="center"
       gap="2"
-      bg={subgoal.complete ? "grey" : "white"}
+      textDecoration={subgoal.complete ? "line-through" : ""}
     >
       <Box p="2">{subgoal.name}</Box>
       <Spacer />

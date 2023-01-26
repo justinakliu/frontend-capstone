@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChakraProvider, Spacer } from "@chakra-ui/react";
-import { Select, Menu, Box, Flex, Button } from "@chakra-ui/react";
+import { Select, Menu, Box, Flex, Button, Heading } from "@chakra-ui/react";
 import TaskTree from "./components/TaskTree.js";
 import TaskList from "./components/TaskList.js";
 import AddRootGoalModal from "./components/AddRootGoalModal.js";
