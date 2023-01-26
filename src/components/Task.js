@@ -14,7 +14,7 @@ const Task = ({ subgoal, handleUpdateGoalComplete }) => {
         <Heading size="md">{subgoal.name}</Heading>
       </Box>
       <Spacer />
-      <Button onClick={() => {}}>
+      <Button onClick={() => handleUpdateGoalComplete(subgoal)}>
         Mark {subgoal.complete ? "Incomplete" : "Complete"}
       </Button>
     </Flex>
