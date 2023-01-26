@@ -4,6 +4,7 @@ import { Select, Menu, Box, Flex, Button } from "@chakra-ui/react";
 import TaskTree from "./components/TaskTree.js";
 import TaskList from "./components/TaskList.js";
 import AddRootGoalModal from "./components/AddRootGoalModal.js";
+import NavBar from "./components/NavBar.js";
 
 import axios from "axios";
 
@@ -73,8 +74,7 @@ function App() {
     const requestBody = { title: name };
     return createGoalAPI(requestBody).then((result) => {
       setIsRootModalOpen(false);
-      // need to refactor backend to return the created goal
-      // set selectedNodeRoot node
+      setSelectedRootGoalId(result.data.id);
       return getRootGoals();
     });
   };
@@ -103,7 +103,8 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Box pos="absolute" top="0" left="0" w="100vw" h="60px" bg="tomato">
+      <NavBar />
+      <Box w="100vw" h="60px" bg="tomato">
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Select
             placeholder="Select a Goal"
