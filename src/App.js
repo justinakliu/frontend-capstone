@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Spacer } from "@chakra-ui/react";
 import { Select, Menu, Box, Flex, Button } from "@chakra-ui/react";
 import TaskTree from "./components/TaskTree.js";
 import TaskList from "./components/TaskList.js";
@@ -104,21 +104,31 @@ function App() {
   return (
     <ChakraProvider>
       <NavBar />
-      <Box w="100vw" h="60px" bg="tomato">
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Select
-            placeholder="Select a Goal"
-            onChange={(event) => {
-              setSelectedRootGoalId(event.target.value);
-            }}
-          >
-            {rootGoals.map((rootGoal) => {
-              return <option value={rootGoal.id}>{rootGoal.name}</option>;
-            })}
-          </Select>
+      <Flex
+        w="100vw"
+        h="60px"
+        align="center"
+        justify="space-between"
+        padding={6}
+        bg="blue.200"
+      >
+        <Select
+          maxW="lg"
+          placeholder="Select a Goal"
+          onChange={(event) => {
+            setSelectedRootGoalId(event.target.value);
+          }}
+        >
+          {rootGoals.map((rootGoal) => {
+            return <option value={rootGoal.id}>{rootGoal.name}</option>;
+          })}
+        </Select>
+        <Spacer />
+        <Flex align="center" justify="space-between" gap="2">
           <Button onClick={() => setIsRootModalOpen(true)}>
             Create New Goal Tree
           </Button>
+          <Button onClick={() => {}}>Delete Goal</Button>
           <Button
             onClick={() => {
               setListView(!listView);
@@ -126,8 +136,8 @@ function App() {
           >
             Toggle View
           </Button>
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
       {!listView && Boolean(selectedRootGoalId) && (
         <TaskTree
           goalId={selectedRootGoalId}
