@@ -9,4 +9,5 @@ I created GoalTree to bridge the gap between big-picture planning and day-to-day
 ## Technologies
 * Frontend: Javascript, React, D3.js, HTML, CSS, Chakra UI
 * Backend: Python, Flask, SQL, PostgreSQL, SQLAlchemy [(visit backend repo here)](https://github.com/justinakliu/goal-tree-back-end)
+* Deployment: [Try out the app here!](goal-tree.herokuapp.com/)
 
