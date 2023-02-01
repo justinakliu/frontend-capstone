@@ -3,7 +3,5 @@ Many productivity apps allow users to manage their task lists, but few help user
 I created GoalTree to bridge the gap between big-picture planning and day-to-day task management. A daunting goal is easier to achieve if it is thoroughly divided into discrete, achievable, tasks. GoalTree helps users do just that. 
 
 ## Technologies
-* Backend: Python, Flask, SQL, PostgreSQL, SQLAlchemy
 * Frontend: Javascript, React, D3.js, HTML, CSS, Chakra UI
-
-View the backend repository here
+* Backend: Python, Flask, SQL, PostgreSQL, SQLAlchemy [view the backend code here](https://github.com/justinakliu/goal-tree-back-end)
