@@ -164,7 +164,6 @@ function ViewGoal() {
 }
 export default ViewGoal;
 
-// TO DO: Add "Create New Goal Tree Modal"
-// After creating new root goal, should set Selected Goal to that Goal
-// Change Text Depending on
-// Lift Up State for Task Tree
+// TO DO: Add name of selected Goal
+// Add Icons to Toggle View Button
+// Add Instructions Text
