@@ -9,7 +9,7 @@ function App() {
       {/* <Route path="/" element={<Home />} /> */}
       <Route path="/goals" element={<MyGoals />} />
       <Route path="/goal/:goalId" element={<ViewGoal />} />
-      <Route path="*" element={<Home />} />
+      <Route path="*" element={<MyGoals />} />
     </Routes>
   );
 }
