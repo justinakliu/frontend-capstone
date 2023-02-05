@@ -49,7 +49,7 @@ const updateGoalCompleteAPI = (goal) => {
     });
 };
 
-function App() {
+function ViewGoal() {
   const [rootGoals, setRootGoals] = useState([]);
   const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
   const [listView, setListView] = useState(false);
@@ -161,7 +161,7 @@ function App() {
     </ChakraProvider>
   );
 }
-export default App;
+export default ViewGoal;
 
 // TO DO: Add "Create New Goal Tree Modal"
 // After creating new root goal, should set Selected Goal to that Goal
