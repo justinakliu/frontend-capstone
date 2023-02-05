@@ -51,37 +51,36 @@ const updateGoalCompleteAPI = (goal) => {
 };
 
 function ViewGoal() {
-  // const [rootGoals, setRootGoals] = useState([]);
-  // const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
+  const [rootGoals, setRootGoals] = useState([]);
+  const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
   const [listView, setListView] = useState(false);
-  // const [isRootModalOpen, setIsRootModalOpen] = useState(false);
+  const [isRootModalOpen, setIsRootModalOpen] = useState(false);
 
   const { goalId } = useParams();
-  console.log(goalId);
 
-  // const getRootGoals = () => {
-  //   getRootGoalsAPI().then((data) => {
-  //     setRootGoals(data);
-  //   });
-  // };
+  const getRootGoals = () => {
+    getRootGoalsAPI().then((data) => {
+      setRootGoals(data);
+    });
+  };
 
-  // useEffect(() => {
-  //   getRootGoals();
-  // }, []);
+  useEffect(() => {
+    getRootGoals();
+  }, []);
 
-  // const handleDeleteRootNode = () => {
-  //   setSelectedRootGoalId(undefined);
-  //   return getRootGoals();
-  // };
+  const handleDeleteRootNode = () => {
+    setSelectedRootGoalId(undefined);
+    return getRootGoals();
+  };
 
-  // const addRootGoal = (name) => {
-  //   const requestBody = { title: name };
-  //   return createGoalAPI(requestBody).then((result) => {
-  //     setIsRootModalOpen(false);
-  //     setSelectedRootGoalId(result.data.id);
-  //     return getRootGoals();
-  //   });
-  // };
+  const addRootGoal = (name) => {
+    const requestBody = { title: name };
+    return createGoalAPI(requestBody).then((result) => {
+      setIsRootModalOpen(false);
+      setSelectedRootGoalId(result.data.id);
+      return getRootGoals();
+    });
+  };
 
   const addSubgoal = (title, parentId) => {
     const requestBody = {
@@ -116,7 +115,7 @@ function ViewGoal() {
         padding={6}
         bg="blue.100"
       >
-        {/* <Select
+        <Select
           bg="gray.100"
           maxW="lg"
           placeholder="Select a Goal"
@@ -127,13 +126,13 @@ function ViewGoal() {
           {rootGoals.map((rootGoal) => {
             return <option value={rootGoal.id}>{rootGoal.name}</option>;
           })}
-        </Select> */}
+        </Select>
         <Spacer />
         <Flex align="center" justify="space-between" gap="2">
-          {/* <Button onClick={() => setIsRootModalOpen(true)}>
+          <Button onClick={() => setIsRootModalOpen(true)}>
             Create New Goal Tree
           </Button>
-          <Button onClick={() => {}}>Delete Goal</Button> */}
+          <Button onClick={() => {}}>Delete Goal</Button>
           <Button
             onClick={() => {
               setListView(!listView);
@@ -143,22 +142,25 @@ function ViewGoal() {
           </Button>
         </Flex>
       </Flex>
-      {!listView && (
+      {!listView && Boolean(selectedRootGoalId) && (
         <TaskTree
-          goalId={goalId}
+          goalId={selectedRootGoalId}
           addGoal={addSubgoal}
           deleteGoal={deleteGoal}
           updateGoalComplete={updateGoalComplete}
         />
       )}
-      {listView && (
-        <TaskList goalId={goalId} updateGoalComplete={updateGoalComplete} />
+      {listView && Boolean(selectedRootGoalId) && (
+        <TaskList
+          goalId={selectedRootGoalId}
+          updateGoalComplete={updateGoalComplete}
+        />
       )}
-      {/* <AddRootGoalModal
+      <AddRootGoalModal
         isOpen={isRootModalOpen}
         onClose={() => setIsRootModalOpen(false)}
         onSubmit={addRootGoal}
-      /> */}
+      />
     </ChakraProvider>
   );
 }
