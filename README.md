@@ -8,5 +8,5 @@ GoalTree helps users thoroughly divide their goals into discrete and achievable 
 ## Technologies
 * Frontend: Javascript, React, D3.js, HTML, CSS, Chakra UI
 * Backend: Python, Flask, SQL, PostgreSQL, SQLAlchemy [(visit backend repo here)](https://github.com/justinakliu/goal-tree-back-end)
-* Deployment: [Try out the app here!](goal-tree.herokuapp.com/)
+* Deployed to Heroku: [Try out the app here!](https://goal-tree.herokuapp.com/)
 
