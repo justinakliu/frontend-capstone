@@ -3,7 +3,6 @@ import { ChakraProvider, Spacer } from "@chakra-ui/react";
 import { Select, Menu, Box, Flex, Button, Heading } from "@chakra-ui/react";
 import GoalList from "../components/GoalList.js";
 import AddRootGoalModal from "../components/AddRootGoalModal.js";
-import NavBar from "../components/NavBar.js";
 
 import axios from "axios";
 
@@ -76,33 +75,34 @@ function MyGoals() {
 
   const deleteGoal = (goalId) => {
     return deleteGoalAPI(goalId).then((result) => {
-      return result;
+      return getRootGoals();
     });
   };
 
   const updateGoalComplete = (goalData) => {
     return updateGoalCompleteAPI(goalData).then((result) => {
-      return result;
+      return getRootGoals();
     });
   };
 
   return (
     <ChakraProvider>
-      <NavBar />
       <Flex
-        w="100vw"
-        h="60px"
         align="center"
         justify="space-between"
         padding={6}
         bg="blue.100"
+        ml={20}
+        mr={20}
+        mt={10}
+        mb={10}
       >
+        <Flex align="center">
+          <Heading size="md">My Goals</Heading>
+        </Flex>
         <Spacer />
         <Flex align="center" justify="space-between" gap="2">
-          <Button onClick={() => setIsRootModalOpen(true)}>
-            Create New Goal Tree
-          </Button>
-          <Button onClick={() => {}}>Delete Goal</Button>
+          <Button onClick={() => setIsRootModalOpen(true)}>+</Button>
         </Flex>
       </Flex>
       <GoalList rootGoals={rootGoals} updateGoalComplete={updateGoalComplete} />
@@ -115,3 +115,13 @@ function MyGoals() {
   );
 }
 export default MyGoals;
+
+// Add more stuff to the app
+// My Goals: completion status bar, delete button for goal
+// Nav Bar: Log Out
+// UI: Styling, Make Goal Page look different than To DO List
+// Add Text to UI like TO DO LIST or something
+// In Demo seed file, add emoji stuff
+// ViewGoal: Toggle View Button Centered, Next to Goal Name
+// Sort My Goals by alphabetical? Or by completion?
+// Write Tests

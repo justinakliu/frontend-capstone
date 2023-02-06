@@ -1,7 +1,9 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import { Flex, Box, Spacer, Button, Heading } from "@chakra-ui/react";
+import { Flex, Box, Spacer, Button, Icon, IconButton } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { ImTree } from "react-icons/im";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 
 const Goal = ({ goal, handleUpdateGoalComplete }) => {
   const navigate = useNavigate();
@@ -12,10 +14,20 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
         {goal.name}
       </Box>
       <Spacer />
-      <Button onClick={() => navigate(`/goal/${goal.id}`)}>View Goal</Button>
-      <Button onClick={() => handleUpdateGoalComplete(goal)}>
-        Mark {goal.complete ? "Incomplete" : "Complete"}
+      <Button
+        onClick={() => handleUpdateGoalComplete(goal)}
+        bg={goal.complete ? "green.200" : "gray.200"}
+      >
+        ✓
       </Button>
+      <IconButton
+        icon={<Icon as={ImTree} />}
+        onClick={() => navigate(`/goal/${goal.id}/tree`)}
+      ></IconButton>
+      <IconButton
+        icon={<Icon as={AiOutlineUnorderedList} />}
+        onClick={() => navigate(`/goal/${goal.id}/list`)}
+      ></IconButton>
     </Flex>
   );
 };

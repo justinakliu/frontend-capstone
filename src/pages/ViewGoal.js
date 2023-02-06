@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 
 import axios from "axios";
 
+// getGoal
+
 const getRootGoalsAPI = () => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/roots`)
@@ -51,37 +53,9 @@ const updateGoalCompleteAPI = (goal) => {
 };
 
 function ViewGoal() {
-  // const [rootGoals, setRootGoals] = useState([]);
-  // const [selectedRootGoalId, setSelectedRootGoalId] = useState(undefined);
-  const [listView, setListView] = useState(false);
-  // const [isRootModalOpen, setIsRootModalOpen] = useState(false);
+  const { goalId, view } = useParams();
 
-  const { goalId } = useParams();
-  console.log(goalId);
-
-  // const getRootGoals = () => {
-  //   getRootGoalsAPI().then((data) => {
-  //     setRootGoals(data);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   getRootGoals();
-  // }, []);
-
-  // const handleDeleteRootNode = () => {
-  //   setSelectedRootGoalId(undefined);
-  //   return getRootGoals();
-  // };
-
-  // const addRootGoal = (name) => {
-  //   const requestBody = { title: name };
-  //   return createGoalAPI(requestBody).then((result) => {
-  //     setIsRootModalOpen(false);
-  //     setSelectedRootGoalId(result.data.id);
-  //     return getRootGoals();
-  //   });
-  // };
+  const [listView, setListView] = useState(view === "list" ? true : false);
 
   const addSubgoal = (title, parentId) => {
     const requestBody = {
@@ -107,40 +81,19 @@ function ViewGoal() {
 
   return (
     <ChakraProvider>
-      <NavBar />
-      <Flex
-        w="100vw"
-        h="60px"
-        align="center"
-        justify="space-between"
-        padding={6}
-        bg="blue.100"
-      >
-        {/* <Select
-          bg="gray.100"
-          maxW="lg"
-          placeholder="Select a Goal"
-          onChange={(event) => {
-            setSelectedRootGoalId(event.target.value);
-          }}
-        >
-          {rootGoals.map((rootGoal) => {
-            return <option value={rootGoal.id}>{rootGoal.name}</option>;
-          })}
-        </Select> */}
+      <Flex align="center" justify="space-between" padding={6} ml={20} mr={20}>
+        <Flex align="center">
+          <Heading size="md">{goalId}</Heading>
+        </Flex>
         <Spacer />
         <Flex align="center" justify="space-between" gap="2">
-          {/* <Button onClick={() => setIsRootModalOpen(true)}>
-            Create New Goal Tree
-          </Button>
-          <Button onClick={() => {}}>Delete Goal</Button> */}
           <Button
             onClick={() => {
               setListView(!listView);
             }}
           >
             Toggle View
-          </Button>
+          </Button>{" "}
         </Flex>
       </Flex>
       {!listView && (
