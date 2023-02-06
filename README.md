@@ -1,7 +1,7 @@
 # GoalTree
 
 ## Problem Space
-Popular to-do list apps help users to manage their tasks, but few help users create comprehensive to-do lists _for_ particular goals. I believe that most goals go unachieved not because of a lack of ability or willpower, but because the steps forward are unclear due to complexity or scale. I created GoalTree to solve this problem and bridge the gap between big-picture planning and task management. 
+Popular to-do list apps help users manage their tasks but don't help users create comprehensive to-do lists _for_ particular goals. I believe that most goals go unachieved not because of a lack of ability or willpower, but because the steps forward are unclear due to complexity or scale. I created GoalTree to solve this problem and bridge the gap between big-picture planning and task management. 
  <br>
  
 GoalTree helps users thoroughly divide their goals into discrete and achievable tasks by using a tree data structure to conceptualize each goal as a tree of related subgoals. Users can generate to-do lists for each goal tree, which aggregates all the leaf nodes of a goal tree. The app allows users to easily toggle between tree and list view for a particular goal, instantaniously updating a to-do list when its corresponding goal tree is revised, and vice-versa. 
