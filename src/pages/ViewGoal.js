@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChakraProvider, Spacer } from "@chakra-ui/react";
 import { Select, Menu, Box, Flex, Button, Heading } from "@chakra-ui/react";
 import TaskTree from "../components/TaskTree.js";
@@ -10,6 +10,17 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // getGoal
+const getGoalAPI = (id) => {
+  return axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const getRootGoalsAPI = () => {
   return axios
@@ -56,6 +67,20 @@ function ViewGoal() {
   const { goalId, view } = useParams();
 
   const [listView, setListView] = useState(view === "list" ? true : false);
+  const [goalId2, setGoalId2] = useState(goalId);
+
+  const [goalName, setGoalName] = useState("");
+
+  const getGoalName = useCallback(() => {
+    getGoalAPI(goalId2).then((result) => {
+      console.log(result.name);
+      setGoalName(result.name);
+    });
+  }, [goalId2]);
+
+  useEffect(() => {
+    getGoalName();
+  }, [getGoalName]);
 
   const addSubgoal = (title, parentId) => {
     const requestBody = {
@@ -83,7 +108,7 @@ function ViewGoal() {
     <ChakraProvider>
       <Flex align="center" justify="space-between" padding={6} ml={20} mr={20}>
         <Flex align="center">
-          <Heading size="md">{goalId}</Heading>
+          <Heading size="md">{goalName}</Heading>
         </Flex>
         <Spacer />
         <Flex align="center" justify="space-between" gap="2">
