@@ -1,5 +1,14 @@
-import { Flex, Box, Spacer, Button, Heading } from "@chakra-ui/react";
+import {
+  Flex,
+  Spacer,
+  Button,
+  Heading,
+  IconButton,
+  Icon,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
+
 const NavBar = () => {
   const navigate = useNavigate();
 
@@ -16,7 +25,10 @@ const NavBar = () => {
         <Heading size="lg">GoalTree</Heading>
       </Flex>
       <Spacer />
-      <Button onClick={() => navigate("/goals")}>My Goals</Button>
+      <IconButton
+        icon={<Icon as={AiOutlineHome} />}
+        onClick={() => navigate("/goals")}
+      ></IconButton>
     </Flex>
   );
 };
