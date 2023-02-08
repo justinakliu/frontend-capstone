@@ -67,16 +67,16 @@ function ViewGoal() {
   const { goalId, view } = useParams();
 
   const [listView, setListView] = useState(view === "list" ? true : false);
-  const [goalId2, setGoalId2] = useState(goalId);
+  // const [goalId2, setGoalId2] = useState(goalId);
 
   const [goalName, setGoalName] = useState("");
 
   const getGoalName = useCallback(() => {
-    getGoalAPI(goalId2).then((result) => {
+    getGoalAPI(goalId).then((result) => {
       console.log(result.name);
       setGoalName(result.name);
     });
-  }, [goalId2]);
+  }, [goalId]);
 
   useEffect(() => {
     getGoalName();
