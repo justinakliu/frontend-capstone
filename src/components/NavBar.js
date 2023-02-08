@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Spacer,
-  Button,
-  Heading,
-  IconButton,
-  Icon,
-} from "@chakra-ui/react";
+import { Flex, Spacer, Heading, IconButton, Icon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 

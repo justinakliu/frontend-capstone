@@ -1,11 +1,22 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChakraProvider, Spacer } from "@chakra-ui/react";
-import { Select, Menu, Box, Flex, Button, Heading } from "@chakra-ui/react";
+import {
+  Select,
+  Menu,
+  Box,
+  Flex,
+  Button,
+  Heading,
+  Icon,
+  IconButton,
+} from "@chakra-ui/react";
 import TaskTree from "../components/TaskTree.js";
 import TaskList from "../components/TaskList.js";
 import AddRootGoalModal from "../components/AddRootGoalModal.js";
 import NavBar from "../components/NavBar.js";
 import { useParams } from "react-router-dom";
+import { ImTree } from "react-icons/im";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 
 import axios from "axios";
 
@@ -106,19 +117,17 @@ function ViewGoal() {
 
   return (
     <ChakraProvider>
-      <Flex align="center" justify="space-between" padding={6} ml={20} mr={20}>
-        <Flex align="center">
+      <Flex align="center" justify="center" margin={3} gap={2}>
+        <Flex align="center" margin={1}>
           <Heading size="md">{goalName}</Heading>
         </Flex>
-        <Spacer />
         <Flex align="center" justify="space-between" gap="2">
-          <Button
+          <IconButton
+            icon={<Icon as={listView ? ImTree : AiOutlineUnorderedList} />}
             onClick={() => {
               setListView(!listView);
             }}
-          >
-            Toggle View
-          </Button>{" "}
+          ></IconButton>
         </Flex>
       </Flex>
       {!listView && (
@@ -132,11 +141,6 @@ function ViewGoal() {
       {listView && (
         <TaskList goalId={goalId} updateGoalComplete={updateGoalComplete} />
       )}
-      {/* <AddRootGoalModal
-        isOpen={isRootModalOpen}
-        onClose={() => setIsRootModalOpen(false)}
-        onSubmit={addRootGoal}
-      /> */}
     </ChakraProvider>
   );
 }
