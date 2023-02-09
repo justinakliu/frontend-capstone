@@ -1,9 +1,6 @@
 import PropTypes from "prop-types";
 import Goal from "./Goal";
 import { VStack, StackDivider } from "@chakra-ui/react";
-import { useEffect, useState, useCallback } from "react";
-
-import axios from "axios";
 
 function GoalList({ rootGoals, updateGoalComplete }) {
   const handleUpdateGoalComplete = (nodeData) => {
@@ -20,8 +17,6 @@ function GoalList({ rootGoals, updateGoalComplete }) {
         mr={20}
         mt={10}
         mb={10}
-        // ml="15%"
-        // mr="15%"
       >
         {rootGoals.map((goal) => (
           <Goal

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Flex, Box, Spacer, Button, Heading } from "@chakra-ui/react";
+import { Flex, Box, Spacer, Button } from "@chakra-ui/react";
 
 const Task = ({ subgoal, handleUpdateGoalComplete }) => {
   return (

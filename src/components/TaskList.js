@@ -26,8 +26,8 @@ function TaskList({ goalId, updateGoalComplete }) {
   }, [goalId]);
 
   useEffect(() => {
-    getList(); //hard-coded
-  }, [getList]); // why underlined?
+    getList();
+  }, [getList]);
 
   const handleUpdateGoalComplete = (nodeData) => {
     return updateGoalComplete(nodeData).then((result) => {
@@ -45,8 +45,6 @@ function TaskList({ goalId, updateGoalComplete }) {
         mr={20}
         mt={10}
         mb={10}
-        // ml="15%"
-        // mr="15%"
       >
         {list.map((subgoal) => (
           <Task

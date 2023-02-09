@@ -1,14 +1,16 @@
-import { Button } from "@chakra-ui/button";
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalOverlay,
-} from "@chakra-ui/modal";
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 function ClickedNodeModal({

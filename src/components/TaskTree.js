@@ -18,44 +18,10 @@ const getGoalTreeAPI = (id) => {
     });
 };
 
-// lift up
-// const createGoalAPI = (goalData) => {
-//   console.log(goalData);
-//   return axios
-//     .post(`${process.env.REACT_APP_BACKEND_URL}/goals`, goalData)
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-// lift up
-// const deleteGoalAPI = (id) => {
-//   return axios
-//     .delete(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// lift up
-// const updateGoalCompleteAPI = (goal) => {
-//   const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
-//   return axios
-//     .patch(
-//       `${process.env.REACT_APP_BACKEND_URL}/goals/${goal.id}/${requested_change}`
-//     )
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// needs to know the parent goal id to know which goal tree to display
-// so maybe this component needs to take in tree?
 function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
 
-  // how do you work around this without writing a function?
   const renderSvgNode = ({ nodeDatum, onNodeClick }) => {
     const getCompleteClass = (nodeDatum) => {
       if (nodeDatum === undefined) {
@@ -86,8 +52,8 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   }, [goalId]);
 
   useEffect(() => {
-    getGoalTree(); //hard-coded
-  }, [getGoalTree]); // why underlined?
+    getGoalTree();
+  }, [getGoalTree]);
 
   const closeClickedGoalModal = () => {
     setNode(undefined);

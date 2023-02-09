@@ -1,26 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChakraProvider, Spacer } from "@chakra-ui/react";
-import {
-  Select,
-  Menu,
-  Box,
-  Flex,
-  Button,
-  Heading,
-  Icon,
-  IconButton,
-} from "@chakra-ui/react";
+import { Flex, Heading, Icon, IconButton } from "@chakra-ui/react";
 import TaskTree from "../components/TaskTree.js";
 import TaskList from "../components/TaskList.js";
-import AddRootGoalModal from "../components/AddRootGoalModal.js";
-import NavBar from "../components/NavBar.js";
 import { useParams } from "react-router-dom";
 import { ImTree } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 
 import axios from "axios";
 
-// getGoal
 const getGoalAPI = (id) => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}`)
@@ -43,8 +30,6 @@ const getRootGoalsAPI = () => {
       console.log(err);
     });
 };
-
-// same as in TaskTree file
 const createGoalAPI = (goalData) => {
   console.log(goalData);
   return axios
@@ -62,7 +47,6 @@ const deleteGoalAPI = (id) => {
     });
 };
 
-// rename
 const updateGoalCompleteAPI = (goal) => {
   const requested_change = goal.complete ? "mark_incomplete" : "mark_complete";
   return axios
@@ -78,7 +62,6 @@ function ViewGoal() {
   const { goalId, view } = useParams();
 
   const [listView, setListView] = useState(view === "list" ? true : false);
-  // const [goalId2, setGoalId2] = useState(goalId);
 
   const [goalName, setGoalName] = useState("");
 
@@ -116,7 +99,7 @@ function ViewGoal() {
   };
 
   return (
-    <ChakraProvider>
+    <>
       <Flex align="center" justify="center" margin={3} gap={2}>
         <Flex align="center" margin={1}>
           <Heading size="md">{goalName}</Heading>
@@ -141,11 +124,7 @@ function ViewGoal() {
       {listView && (
         <TaskList goalId={goalId} updateGoalComplete={updateGoalComplete} />
       )}
-    </ChakraProvider>
+    </>
   );
 }
 export default ViewGoal;
-
-// TO DO: Add name of selected Goal
-// Add Icons to Toggle View Button
-// Add Instructions Text
