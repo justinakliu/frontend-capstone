@@ -4,16 +4,16 @@ import { Flex, Box, Spacer, Button, Heading } from "@chakra-ui/react";
 
 const Task = ({ subgoal, handleUpdateGoalComplete }) => {
   return (
-    <Flex
-      minWidth="max-content"
-      alignItems="center"
-      gap="2"
-      textDecoration={subgoal.complete ? "line-through" : ""}
-    >
-      <Box p="2">{subgoal.name}</Box>
+    <Flex minWidth="max-content" alignItems="center" gap="2">
+      <Box textDecoration={subgoal.complete ? "line-through" : ""} p="2">
+        {subgoal.name}
+      </Box>
       <Spacer />
-      <Button onClick={() => handleUpdateGoalComplete(subgoal)}>
-        Mark {subgoal.complete ? "Incomplete" : "Complete"}
+      <Button
+        onClick={() => handleUpdateGoalComplete(subgoal)}
+        bg={subgoal.complete ? "green.200" : "gray.200"}
+      >
+        ✓
       </Button>
     </Flex>
   );
