@@ -15,7 +15,7 @@ function GoalList({ rootGoals, updateGoalComplete }) {
         align="stretch"
         ml={20}
         mr={20}
-        mt={10}
+        mt={5}
         mb={10}
       >
         {rootGoals.map((goal) => (

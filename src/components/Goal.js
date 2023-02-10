@@ -11,20 +11,27 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">
       <Button
+        size="sm"
         onClick={() => handleUpdateGoalComplete(goal)}
-        bg={goal.complete ? "green.200" : "gray.200"}
+        bg={goal.complete ? "green.200" : "orange.100"}
       >
         ✓
       </Button>
-      <Box p="2" textDecoration={goal.complete ? "line-through" : ""}>
+      <Box
+        p="2"
+        fontSize="sm"
+        textDecoration={goal.complete ? "line-through" : ""}
+      >
         {goal.name}
       </Box>
       <Spacer />
       <IconButton
+        size="sm"
         icon={<Icon as={ImTree} />}
         onClick={() => navigate(`/goal/${goal.id}/tree`)}
       ></IconButton>
       <IconButton
+        size="sm"
         icon={<Icon as={AiOutlineUnorderedList} />}
         onClick={() => navigate(`/goal/${goal.id}/list`)}
       ></IconButton>

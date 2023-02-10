@@ -8,17 +8,22 @@ const NavBar = () => {
   return (
     <Flex
       w="100vw"
-      h="60px"
-      padding={6}
-      bg="blue.200"
+      h="40px"
+      padding={4}
       align="center"
       justify="space-between"
+      borderBottomColor="orange.400"
+      borderBottomWidth={3}
     >
       <Flex align="center">
-        <Heading size="lg">GoalTree</Heading>
+        <Heading size="md" fontStyle="italic" color="gray.700">
+          GoalTree
+        </Heading>
       </Flex>
       <Spacer />
       <IconButton
+        margin={2}
+        size="sm"
         icon={<Icon as={AiOutlineHome} />}
         onClick={() => navigate("/goals")}
       ></IconButton>

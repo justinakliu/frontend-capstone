@@ -86,14 +86,24 @@ function MyGoals() {
   return (
     <ChakraProvider>
       <Flex align="center" justifyContent="center" margin={3} gap={2}>
-        <Flex align="center" justifyContent="space-between">
-          <Flex margin={2}>
-            <Heading size="md">My Goals</Heading>
+        <Flex
+          backgroundColor="orange.200"
+          mt={4}
+          padding={2}
+          borderRadius="10px"
+          gap={4}
+        >
+          <Flex align="center" justifyContent="space-between">
+            <Flex margin={2}>
+              <Heading size="md" color="gray.700">
+                My Goals
+              </Heading>
+            </Flex>
+            <Spacer />
+            <Button size="sm" onClick={() => setIsRootModalOpen(true)}>
+              +
+            </Button>
           </Flex>
-          <Spacer />
-          <Button size="md" onClick={() => setIsRootModalOpen(true)}>
-            +
-          </Button>
         </Flex>
       </Flex>
       <GoalList rootGoals={rootGoals} updateGoalComplete={updateGoalComplete} />

@@ -38,12 +38,12 @@ function TaskList({ goalId, updateGoalComplete }) {
   return (
     <>
       <VStack
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackDivider borderColor="orange.400" />}
         spacing={4}
         align="stretch"
         ml={20}
         mr={20}
-        mt={10}
+        mt={5}
         mb={10}
       >
         {list.map((subgoal) => (

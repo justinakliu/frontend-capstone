@@ -100,17 +100,28 @@ function ViewGoal() {
 
   return (
     <>
-      <Flex align="center" justify="center" margin={3} gap={2}>
-        <Flex align="center" margin={1}>
-          <Heading size="md">{goalName}</Heading>
-        </Flex>
-        <Flex align="center" justify="space-between" gap="2">
-          <IconButton
-            icon={<Icon as={listView ? ImTree : AiOutlineUnorderedList} />}
-            onClick={() => {
-              setListView(!listView);
-            }}
-          ></IconButton>
+      <Flex align="center" justify="center">
+        <Flex
+          backgroundColor="orange.200"
+          mt={4}
+          padding={2}
+          borderRadius="10px"
+          gap={4}
+        >
+          <Flex align="center" margin={1}>
+            <Heading size="md" color="gray.700">
+              {goalName}
+            </Heading>
+          </Flex>
+          <Flex align="center" justify="space-between" gap="2">
+            <IconButton
+              size="sm"
+              icon={<Icon as={listView ? ImTree : AiOutlineUnorderedList} />}
+              onClick={() => {
+                setListView(!listView);
+              }}
+            ></IconButton>
+          </Flex>
         </Flex>
       </Flex>
       {!listView && (
