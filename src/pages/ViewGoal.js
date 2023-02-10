@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Flex, Heading, Icon, IconButton } from "@chakra-ui/react";
+import { Flex, Text, Icon, IconButton } from "@chakra-ui/react";
 import TaskTree from "../components/TaskTree.js";
 import TaskList from "../components/TaskList.js";
 import { useParams } from "react-router-dom";
@@ -109,9 +109,9 @@ function ViewGoal() {
           gap={4}
         >
           <Flex align="center" margin={1}>
-            <Heading size="md" color="gray.700">
+            <Text fontSize="lg" fontWeight="bold" color="gray.700">
               {goalName}
-            </Heading>
+            </Text>
           </Flex>
           <Flex align="center" justify="space-between" gap="2">
             <IconButton

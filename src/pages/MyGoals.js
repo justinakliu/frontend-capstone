@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ChakraProvider, Spacer } from "@chakra-ui/react";
-import { Flex, Button, Heading } from "@chakra-ui/react";
+import { ChakraProvider, Spacer, Text } from "@chakra-ui/react";
+import { Flex, Button } from "@chakra-ui/react";
 import GoalList from "../components/GoalList.js";
 import AddRootGoalModal from "../components/AddRootGoalModal.js";
 
@@ -86,18 +86,12 @@ function MyGoals() {
   return (
     <ChakraProvider>
       <Flex align="center" justifyContent="center" margin={3} gap={2}>
-        <Flex
-          backgroundColor="orange.200"
-          mt={4}
-          padding={2}
-          borderRadius="10px"
-          gap={4}
-        >
+        <Flex padding={2} gap={4}>
           <Flex align="center" justifyContent="space-between">
             <Flex margin={2}>
-              <Heading size="md" color="gray.700">
+              <Text fontSize="lg" fontWeight="bold" color="gray.700">
                 My Goals
-              </Heading>
+              </Text>
             </Flex>
             <Spacer />
             <Button size="sm" onClick={() => setIsRootModalOpen(true)}>

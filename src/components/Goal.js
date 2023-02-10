@@ -13,7 +13,7 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
       <Button
         size="sm"
         onClick={() => handleUpdateGoalComplete(goal)}
-        bg={goal.complete ? "green.200" : "orange.100"}
+        bg={goal.complete ? "green.200" : "gray.200"}
       >
         ✓
       </Button>

@@ -10,7 +10,7 @@ function GoalList({ rootGoals, updateGoalComplete }) {
   return (
     <>
       <VStack
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackDivider borderColor="orange.400" />}
         spacing={4}
         align="stretch"
         ml={20}
