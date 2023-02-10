@@ -9,7 +9,16 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
   const navigate = useNavigate();
 
   return (
-    <Flex minWidth="max-content" alignItems="center" gap="2">
+    <Flex
+      minWidth="max-content"
+      alignItems="center"
+      gap="2"
+      padding={3}
+      backgroundColor="orange.100"
+      borderRadius="10px"
+      borderColor="orange.200"
+      borderWidth="2px"
+    >
       <Button
         size="sm"
         onClick={() => handleUpdateGoalComplete(goal)}

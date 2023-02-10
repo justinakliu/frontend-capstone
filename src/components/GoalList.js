@@ -9,15 +9,7 @@ function GoalList({ rootGoals, updateGoalComplete }) {
 
   return (
     <>
-      <VStack
-        divider={<StackDivider borderColor="orange.400" />}
-        spacing={4}
-        align="stretch"
-        ml={20}
-        mr={20}
-        mt={5}
-        mb={10}
-      >
+      <VStack spacing={4} align="stretch" ml={20} mr={20} mt={5} mb={10}>
         {rootGoals.map((goal) => (
           <Goal
             goal={goal}

@@ -101,14 +101,16 @@ function ViewGoal() {
   return (
     <>
       <Flex align="center" justify="center">
-        <Flex
-          backgroundColor="orange.200"
-          mt={4}
-          padding={2}
-          borderRadius="10px"
-          gap={4}
-        >
-          <Flex align="center" margin={1}>
+        <Flex mt={4} gap={4}>
+          <Flex
+            align="center"
+            paddingLeft={2}
+            paddingRight={2}
+            backgroundColor="orange.100"
+            borderRadius="10px"
+            borderWidth="2px"
+            borderColor="orange.200"
+          >
             <Text fontSize="lg" fontWeight="bold" color="gray.700">
               {goalName}
             </Text>
