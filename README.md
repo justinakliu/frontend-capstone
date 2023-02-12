@@ -10,3 +10,56 @@ GoalTree helps users thoroughly divide their goals into discrete and achievable 
 * Backend: Python, Flask, SQL, PostgreSQL, SQLAlchemy [(visit backend repo here)](https://github.com/justinakliu/goal-tree-back-end)
 * Deployed to Heroku: [Try out the app here!](https://goal-tree.herokuapp.com/)
 
+## Features
+
+## Set Up
+To run this project on your local computer, follow the instructions below.
+
+### Backend Set Up
+
+Start by cloning the backend repo.
+```
+git clone https://github.com/justinakliu/goal-tree-back-end.git
+```
+Create and activate a virtual environment inside your directory
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+Install the dependencies:
+```
+pip install -r requirements.txt
+```
+Set up the database:
+```
+python3 seed.py
+```
+Run the app:
+```
+flask run
+```
+
+### Frontend Set Up
+
+Clone the frontend repo in a separate directory.
+
+```
+git clone https://github.com/justinakliu/goal-tree-front-end.git
+```
+
+Install the dependencies:
+
+```
+npm install
+```
+
+Run the app:
+
+```
+npm run dev #
+```
+<br>
+
+You can now navigate to 'localhost:3000/' to access GoalTree!
+
+
