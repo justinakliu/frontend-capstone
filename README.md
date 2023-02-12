@@ -60,6 +60,6 @@ npm run dev #
 ```
 <br>
 
-You can now navigate to 'localhost:3000/' to access GoalTree!
+You can now access GoalTree at 'localhost:3000/'!
 
 
