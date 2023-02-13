@@ -13,7 +13,10 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
       minWidth="max-content"
       alignItems="center"
       gap="2"
-      padding={3}
+      paddingLeft={3}
+      paddingRight={3}
+      paddingTop={2}
+      paddingBottom={2}
       backgroundColor={goal.complete ? "green.50" : "orange.100"}
       borderRadius="10px"
       borderColor={goal.complete ? "green.100" : "orange.200"}
