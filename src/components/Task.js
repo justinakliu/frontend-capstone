@@ -9,11 +9,7 @@ const Task = ({ subgoal, handleUpdateGoalComplete }) => {
         {subgoal.name}
       </Box>
       <Spacer />
-      <Button
-        size="sm"
-        onClick={() => handleUpdateGoalComplete(subgoal)}
-        bg={subgoal.complete ? "green.200" : "gray.200"}
-      >
+      <Button size="sm" onClick={() => handleUpdateGoalComplete(subgoal)}>
         ✓
       </Button>
     </Flex>

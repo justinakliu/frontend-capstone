@@ -27,7 +27,6 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
       if (nodeDatum === undefined) {
         return "";
       } else {
-        console.log(nodeDatum.complete);
         return nodeDatum.complete ? "complete" : "";
       }
     };

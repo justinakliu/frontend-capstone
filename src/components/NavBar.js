@@ -12,7 +12,7 @@ const NavBar = () => {
       padding={4}
       align="center"
       justify="space-between"
-      borderBottomColor="orange.400"
+      borderBottomColor="orange.300"
       borderBottomWidth={3}
     >
       <Flex align="center">

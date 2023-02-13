@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Goal from "./Goal";
-import { VStack, StackDivider } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 function GoalList({ rootGoals, updateGoalComplete }) {
   const handleUpdateGoalComplete = (nodeData) => {

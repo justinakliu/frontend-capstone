@@ -14,18 +14,11 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
       alignItems="center"
       gap="2"
       padding={3}
-      backgroundColor="orange.100"
+      backgroundColor={goal.complete ? "green.50" : "orange.100"}
       borderRadius="10px"
-      borderColor="orange.200"
+      borderColor={goal.complete ? "green.100" : "orange.200"}
       borderWidth="2px"
     >
-      <Button
-        size="sm"
-        onClick={() => handleUpdateGoalComplete(goal)}
-        bg={goal.complete ? "green.200" : "gray.200"}
-      >
-        ✓
-      </Button>
       <Box
         p="2"
         fontSize="sm"
@@ -44,6 +37,9 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
         icon={<Icon as={AiOutlineUnorderedList} />}
         onClick={() => navigate(`/goal/${goal.id}/list`)}
       ></IconButton>
+      <Button size="sm" onClick={() => handleUpdateGoalComplete(goal)}>
+        ✓
+      </Button>
     </Flex>
   );
 };

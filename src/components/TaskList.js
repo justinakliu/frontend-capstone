@@ -38,7 +38,7 @@ function TaskList({ goalId, updateGoalComplete }) {
   return (
     <>
       <VStack
-        divider={<StackDivider borderColor="orange.400" />}
+        divider={<StackDivider borderColor="gray.300" />}
         spacing={4}
         align="stretch"
         ml={20}
