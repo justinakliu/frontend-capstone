@@ -36,11 +36,11 @@ Create a database for the application and a .env file. In the .env file, create 
 SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://postgres:postgres@localhost:5432/goal_tree_database
 
 ```
-Then run:
+To finish setting up your local database, run:
 ```
 flask db upgrade
 ```
-Run the app:
+And finally, to run the backend app:
 ```
 flask run
 ```
