@@ -34,7 +34,6 @@ Create a database for the application and a .env file. In the .env file, create 
 
 ```
 SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://postgres:postgres@localhost:5432/goal_tree_database
-
 ```
 To finish setting up your local database, run:
 ```
