@@ -30,9 +30,15 @@ Install the dependencies:
 ```
 pip install -r requirements.txt
 ```
-Set up the database:
+Create a database for the application and a .env file. In the .env file, create an environment variable called `SQLALCHEMY_DATABASE_URI` to hold the path to your database. Your .env file might look like:
+
 ```
-python3 seed.py
+SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://postgres:postgres@localhost:5432/goal_tree_database
+
+```
+Then run:
+```
+flask db upgrade
 ```
 Run the app:
 ```
