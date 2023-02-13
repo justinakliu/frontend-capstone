@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Flex, Text, Icon, IconButton } from "@chakra-ui/react";
+import { Flex, Text, Icon, IconButton, ButtonGroup } from "@chakra-ui/react";
 import TaskTree from "../components/TaskTree.js";
 import TaskList from "../components/TaskList.js";
 import { useParams } from "react-router-dom";
@@ -63,18 +63,17 @@ function ViewGoal() {
 
   const [listView, setListView] = useState(view === "list" ? true : false);
 
-  const [goalName, setGoalName] = useState("");
+  const [goal, setGoal] = useState({});
 
-  const getGoalName = useCallback(() => {
+  const getGoal = useCallback(() => {
     getGoalAPI(goalId).then((result) => {
-      console.log(result.name);
-      setGoalName(result.name);
+      setGoal(result);
     });
   }, [goalId]);
 
   useEffect(() => {
-    getGoalName();
-  }, [getGoalName]);
+    getGoal();
+  }, [getGoal]);
 
   const addSubgoal = (title, parentId) => {
     const requestBody = {
@@ -82,19 +81,19 @@ function ViewGoal() {
       title: title,
     };
     return createGoalAPI(requestBody).then((result) => {
-      return result;
+      return getGoal();
     });
   };
 
   const deleteGoal = (goalId) => {
     return deleteGoalAPI(goalId).then((result) => {
-      return result;
+      return getGoal();
     });
   };
 
   const updateGoalComplete = (goalData) => {
     return updateGoalCompleteAPI(goalData).then((result) => {
-      return result;
+      return getGoal();
     });
   };
 
@@ -106,13 +105,13 @@ function ViewGoal() {
             align="center"
             paddingLeft={2}
             paddingRight={2}
-            backgroundColor="orange.100"
+            backgroundColor={goal.complete ? "green.50" : "orange.100"}
             borderRadius="10px"
             borderWidth="2px"
-            borderColor="orange.200"
+            borderColor={goal.complete ? "green.100" : "orange.200"}
           >
             <Text fontSize="lg" fontWeight="bold" color="gray.700">
-              {goalName}
+              {goal.name}
             </Text>
           </Flex>
           <Flex align="center" justify="space-between" gap="2">
