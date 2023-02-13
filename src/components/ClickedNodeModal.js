@@ -60,9 +60,9 @@ function ClickedNodeModal({
             <Button
               mt={3}
               size="sm"
-              colorScheme="blue"
               onClick={handleAddSubgoalSubmit}
               disabled={!name}
+              bg="orange.200"
             >
               Add Subgoal
             </Button>
@@ -72,17 +72,17 @@ function ClickedNodeModal({
           <Flex alignItems="center" gap="2">
             <Button
               size="sm"
-              colorScheme="orange"
+              bg={
+                getUpdateButtonText() === "Mark Node Incomplete"
+                  ? "orange.100"
+                  : "green.100"
+              }
               onClick={() => handleUpdateGoalComplete()}
             >
               {getUpdateButtonText()}
             </Button>
             <Spacer />
-            <Button
-              size="sm"
-              colorScheme="red"
-              onClick={() => handleDeleteGoal()}
-            >
+            <Button size="sm" bg="red.300" onClick={() => handleDeleteGoal()}>
               Delete Node
             </Button>
           </Flex>
