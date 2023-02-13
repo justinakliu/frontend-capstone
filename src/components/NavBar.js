@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <Flex
       w="100vw"
-      h="40px"
+      h="60px"
       padding={4}
       align="center"
       justify="space-between"
@@ -16,7 +16,7 @@ const NavBar = () => {
       borderBottomWidth={3}
     >
       <Flex align="center">
-        <Heading size="md" fontStyle="italic" color="gray.700">
+        <Heading size="lg" fontStyle="italic" color="green.300">
           GoalTree
         </Heading>
       </Flex>

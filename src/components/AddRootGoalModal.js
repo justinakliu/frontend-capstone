@@ -37,7 +37,7 @@ function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
         </ModalBody>
         <ModalFooter>
           <Button
-            colorScheme="blue"
+            bg="orange.100"
             onClick={handleAddRootGoalSubmit}
             disabled={!name}
           >

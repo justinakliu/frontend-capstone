@@ -9,6 +9,8 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -48,31 +50,42 @@ function ClickedNodeModal({
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
-            <FormLabel>Add Subgoal</FormLabel>
+            <FormLabel>Actions</FormLabel>
             <Input
               value={name}
               onChange={(event) => setName(event.target.value)}
             />
           </FormControl>
-          <Button
-            colorScheme="blue"
-            onClick={handleAddSubgoalSubmit}
-            disabled={!name}
-          >
-            Add Subgoal to Node
-          </Button>
+          <Flex justifyContent="right">
+            <Button
+              mt={3}
+              size="sm"
+              colorScheme="blue"
+              onClick={handleAddSubgoalSubmit}
+              disabled={!name}
+            >
+              Add Subgoal
+            </Button>
+          </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button
-            colorScheme="orange"
-            onClick={() => handleUpdateGoalComplete()}
-          >
-            {getUpdateButtonText()}
-          </Button>
-
-          <Button colorScheme="red" onClick={() => handleDeleteGoal()}>
-            Delete Node
-          </Button>
+          <Flex alignItems="center" gap="2">
+            <Button
+              size="sm"
+              colorScheme="orange"
+              onClick={() => handleUpdateGoalComplete()}
+            >
+              {getUpdateButtonText()}
+            </Button>
+            <Spacer />
+            <Button
+              size="sm"
+              colorScheme="red"
+              onClick={() => handleDeleteGoal()}
+            >
+              Delete Node
+            </Button>
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>
