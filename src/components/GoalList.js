@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import Goal from "./Goal";
 import { VStack } from "@chakra-ui/react";
+import Goal from "./Goal";
 
-function GoalList({ rootGoals, updateGoalComplete }) {
+function GoalList({ rootGoals, updateGoalComplete, deleteGoal }) {
   const handleUpdateGoalComplete = (nodeData) => {
     return updateGoalComplete(nodeData);
   };
@@ -14,6 +14,7 @@ function GoalList({ rootGoals, updateGoalComplete }) {
           <Goal
             goal={goal}
             handleUpdateGoalComplete={handleUpdateGoalComplete}
+            deleteGoal={deleteGoal}
           />
         ))}
       </VStack>

@@ -14,9 +14,10 @@ const NavBar = () => {
       justify="space-between"
       borderBottomColor="orange.300"
       borderBottomWidth={3}
+      bg="orange.50"
     >
       <Flex align="center">
-        <Heading size="lg" fontStyle="italic" color="green.300">
+        <Heading size="lg" color="green.300">
           GoalTree
         </Heading>
       </Flex>

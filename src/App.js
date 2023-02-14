@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 import ViewGoal from "./pages/ViewGoal";
 import MyGoals from "./pages/MyGoals";
 import NavBar from "./components/NavBar.js";
-import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (

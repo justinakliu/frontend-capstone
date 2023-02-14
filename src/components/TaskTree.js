@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
-import Tree from "react-d3-tree";
+import PropTypes from "prop-types";
 import { Box } from "@chakra-ui/react";
-import axios from "axios";
+import Tree from "react-d3-tree";
 import ClickedNodeModal from "./ClickedNodeModal";
 import "./Tree.css";
-import PropTypes from "prop-types";
 
-// lift up ???
+import axios from "axios";
+
 const getGoalTreeAPI = (id) => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/goals/${id}/tree`)
@@ -58,7 +58,6 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
     setNode(undefined);
   };
 
-  // lift up
   const handleAddSubgoal = (subgoalTitle) => {
     const parentId = node.data.id;
     return addGoal(subgoalTitle, parentId).then((result) => {
@@ -68,7 +67,7 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   };
 
   const handleDeleteGoal = () => {
-    return deleteGoal(node.data.id).then((result) => {
+    return deleteGoal(node.data).then((result) => {
       closeClickedGoalModal();
       return getGoalTree();
     });

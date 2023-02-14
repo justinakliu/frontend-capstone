@@ -5,7 +5,11 @@ import { Flex, Box, Spacer, Button } from "@chakra-ui/react";
 const Task = ({ subgoal, handleUpdateGoalComplete }) => {
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">
-      <Box textDecoration={subgoal.complete ? "line-through" : ""} p="2">
+      <Box
+        fontSize="sm"
+        textDecoration={subgoal.complete ? "line-through" : ""}
+        p="2"
+      >
         {subgoal.name}
       </Box>
       <Spacer />

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import Task from "./Task";
-import { VStack, StackDivider } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
+import PropTypes from "prop-types";
+import { VStack, StackDivider } from "@chakra-ui/react";
+import Task from "./Task";
 
 import axios from "axios";
 

@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
-import { Flex, Text, Icon, IconButton, ButtonGroup } from "@chakra-ui/react";
-import TaskTree from "../components/TaskTree.js";
-import TaskList from "../components/TaskList.js";
+import { Flex, Text, Icon, IconButton } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { ImTree } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+
+import TaskTree from "../components/TaskTree.js";
+import TaskList from "../components/TaskList.js";
 
 import axios from "axios";
 
@@ -20,16 +22,6 @@ const getGoalAPI = (id) => {
     });
 };
 
-const getRootGoalsAPI = () => {
-  return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/goals/roots`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
 const createGoalAPI = (goalData) => {
   console.log(goalData);
   return axios
@@ -60,6 +52,7 @@ const updateGoalCompleteAPI = (goal) => {
 
 function ViewGoal() {
   const { goalId, view } = useParams();
+  const navigate = useNavigate();
 
   const [listView, setListView] = useState(view === "list" ? true : false);
 
@@ -85,8 +78,11 @@ function ViewGoal() {
     });
   };
 
-  const deleteGoal = (goalId) => {
-    return deleteGoalAPI(goalId).then((result) => {
+  const deleteGoal = (goal) => {
+    return deleteGoalAPI(goal.id).then((result) => {
+      if (!goal.parent_id) {
+        navigate(`/goals`);
+      }
       return getGoal();
     });
   };

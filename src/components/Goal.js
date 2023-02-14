@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ImTree } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 
-const Goal = ({ goal, handleUpdateGoalComplete }) => {
+const Goal = ({ goal, handleUpdateGoalComplete, deleteGoal }) => {
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
       borderWidth="2px"
     >
       <Box
-        p="2"
+        padding={2}
         fontSize="sm"
         textDecoration={goal.complete ? "line-through" : ""}
       >
@@ -42,6 +42,9 @@ const Goal = ({ goal, handleUpdateGoalComplete }) => {
       ></IconButton>
       <Button size="sm" onClick={() => handleUpdateGoalComplete(goal)}>
         ✓
+      </Button>
+      <Button size="sm" onClick={() => deleteGoal(goal.id)}>
+        x
       </Button>
     </Flex>
   );

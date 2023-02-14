@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ChakraProvider, Spacer, Text } from "@chakra-ui/react";
-import { Flex, Button } from "@chakra-ui/react";
+import { Spacer, Text, Flex, Button } from "@chakra-ui/react";
+
 import GoalList from "../components/GoalList.js";
 import AddRootGoalModal from "../components/AddRootGoalModal.js";
 
@@ -59,10 +59,6 @@ function MyGoals() {
     getRootGoals();
   }, []);
 
-  const handleDeleteRootNode = () => {
-    return getRootGoals();
-  };
-
   const addRootGoal = (name) => {
     const requestBody = { title: name };
     return createGoalAPI(requestBody).then((result) => {
@@ -84,7 +80,7 @@ function MyGoals() {
   };
 
   return (
-    <ChakraProvider>
+    <>
       <Flex align="center" justifyContent="center" margin={3} gap={2}>
         <Flex padding={2} gap={4}>
           <Flex align="center" justifyContent="space-between">
@@ -100,21 +96,17 @@ function MyGoals() {
           </Flex>
         </Flex>
       </Flex>
-      <GoalList rootGoals={rootGoals} updateGoalComplete={updateGoalComplete} />
+      <GoalList
+        rootGoals={rootGoals}
+        updateGoalComplete={updateGoalComplete}
+        deleteGoal={deleteGoal}
+      />
       <AddRootGoalModal
         isOpen={isRootModalOpen}
         onClose={() => setIsRootModalOpen(false)}
         onSubmit={addRootGoal}
       />
-    </ChakraProvider>
+    </>
   );
 }
 export default MyGoals;
-
-// My Goals: completion status bar, delete button for goal
-// Nav Bar: Log Out
-// UI: Styling, Make Goal Page look different than To DO List
-// Add Text to UI like TO DO LIST or something
-// In Demo seed file, add emoji stuff
-// Sort My Goals by alphabetical? Or by completion?
-// Write Tests

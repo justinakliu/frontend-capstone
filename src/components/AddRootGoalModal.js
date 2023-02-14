@@ -1,5 +1,7 @@
-import { Button } from "@chakra-ui/button";
+import { useState } from "react";
+
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,9 +9,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/modal";
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
 
 function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
   const [name, setName] = useState("");
