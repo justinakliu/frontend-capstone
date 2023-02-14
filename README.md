@@ -14,12 +14,14 @@ GoalTree helps users thoroughly divide their goals into discrete and achievable 
 
 ### My Goals Page
 <img width="1252" alt="Screen Shot 2023-02-13 at 10 18 10 PM" src="https://user-images.githubusercontent.com/87151448/218630582-86477aa7-a317-4eb6-bfd2-6a5c9d2d06de.png">
+
 - Users can view all goals as well as create, delete and update goals
 - Color of the goal reflects the goal’s completion status
 - Users navigate to the tree and list views of a goal by clicking on the corresponding button
 
 ### Tree View 
 <img width="1240" alt="Screen Shot 2023-02-13 at 10 18 30 PM" src="https://user-images.githubusercontent.com/87151448/218630604-2944cd6c-e4af-4ae7-b5a1-84ed5d86a1a1.png">
+
 - Users can build a goal tree for a goal by adding subgoals, as well as delete and update existing nodes
 - Users update any node on the tree and the entire tree will automatically update (a parent node is defined as complete if all of its children are complete; a childless node is complete if it has been marked complete)
 - User can toggle back and forth between tree and list view
