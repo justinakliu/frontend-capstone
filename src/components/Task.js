@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Flex, Box, Spacer, Button } from "@chakra-ui/react";
+import { Flex, Box, Spacer, Button, IconButton } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
 
-const Task = ({ subgoal, handleUpdateGoalComplete }) => {
+const Task = ({
+  subgoal,
+  handleUpdateGoalComplete,
+  handleUpdateGoalPriority,
+}) => {
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">
       <Box
@@ -13,6 +18,13 @@ const Task = ({ subgoal, handleUpdateGoalComplete }) => {
         {subgoal.name}
       </Box>
       <Spacer />
+      <Button
+        size="sm"
+        color={subgoal.priority ? "orange.300" : "gray.400"}
+        onClick={() => handleUpdateGoalPriority(subgoal)}
+      >
+        ★
+      </Button>
       <Button size="sm" onClick={() => handleUpdateGoalComplete(subgoal)}>
         ✓
       </Button>

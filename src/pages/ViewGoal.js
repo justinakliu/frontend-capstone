@@ -50,6 +50,17 @@ const updateGoalCompleteAPI = (goal) => {
     });
 };
 
+const updateGoalPriorityAPI = (goal) => {
+  const requested_change = goal.priority ? "unmark_priority" : "mark_priority";
+  return axios
+    .patch(
+      `${process.env.REACT_APP_BACKEND_URL}/goals/${goal.id}/${requested_change}`
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 function ViewGoal() {
   const { goalId, view } = useParams();
   const navigate = useNavigate();
@@ -93,6 +104,12 @@ function ViewGoal() {
     });
   };
 
+  const updateGoalPriority = (goalData) => {
+    return updateGoalPriorityAPI(goalData).then((result) => {
+      return getGoal();
+    });
+  };
+
   return (
     <>
       <Flex align="center" justify="center">
@@ -130,7 +147,11 @@ function ViewGoal() {
         />
       )}
       {listView && (
-        <TaskList goalId={goalId} updateGoalComplete={updateGoalComplete} />
+        <TaskList
+          goalId={goalId}
+          updateGoalComplete={updateGoalComplete}
+          updateGoalPriority={updateGoalPriority}
+        />
       )}
     </>
   );

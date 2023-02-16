@@ -16,7 +16,7 @@ const getLeafGoalsAPI = (id) => {
     });
 };
 
-function TaskList({ goalId, updateGoalComplete }) {
+function TaskList({ goalId, updateGoalComplete, updateGoalPriority }) {
   const [list, setList] = useState([]);
 
   const getList = useCallback(() => {
@@ -31,6 +31,12 @@ function TaskList({ goalId, updateGoalComplete }) {
 
   const handleUpdateGoalComplete = (nodeData) => {
     return updateGoalComplete(nodeData).then((result) => {
+      return getList();
+    });
+  };
+
+  const handleUpdateGoalPriority = (nodeData) => {
+    return updateGoalPriority(nodeData).then((result) => {
       return getList();
     });
   };
@@ -50,6 +56,7 @@ function TaskList({ goalId, updateGoalComplete }) {
           <Task
             subgoal={subgoal}
             handleUpdateGoalComplete={handleUpdateGoalComplete}
+            handleUpdateGoalPriority={handleUpdateGoalPriority}
           />
         ))}
       </VStack>
