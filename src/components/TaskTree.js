@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Box } from "@chakra-ui/react";
 import Tree from "react-d3-tree";
 import ClickedNodeModal from "./ClickedNodeModal";
+import AddSubgoalModal from "./AddSubgoalModal";
+
 import "./Tree.css";
 
 import axios from "axios";
@@ -21,6 +23,8 @@ const getGoalTreeAPI = (id) => {
 function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   const [tree, setTree] = useState({});
   const [node, setNode] = useState(undefined);
+  const [clickedNodeModalOpen, setClickedNodeModalOpen] = useState(false);
+  const [addSubgoalModalOpen, setAddSubgoalModalOpen] = useState(false);
 
   const renderSvgNode = ({ nodeDatum, onNodeClick }) => {
     const getCompleteClass = (nodeDatum) => {
@@ -55,13 +59,24 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
   }, [getGoalTree]);
 
   const closeClickedGoalModal = () => {
+    setClickedNodeModalOpen(false);
+    setNode(undefined);
+  };
+
+  const transitionSubgoalModal = () => {
+    setClickedNodeModalOpen(false);
+    setAddSubgoalModalOpen(true);
+  };
+
+  const closeAddSubgoalModal = () => {
+    setAddSubgoalModalOpen(false);
     setNode(undefined);
   };
 
   const handleAddSubgoal = (subgoalTitle) => {
     const parentId = node.data.id;
     return addGoal(subgoalTitle, parentId).then((result) => {
-      closeClickedGoalModal();
+      closeAddSubgoalModal();
       return getGoalTree();
     });
   };
@@ -86,6 +101,7 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
         data={tree}
         onNodeClick={(datum) => {
           setNode(datum);
+          setClickedNodeModalOpen(true);
         }}
         translate={{ x: 600, y: 100 }}
         collapsible={false}
@@ -96,12 +112,17 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
       />
 
       <ClickedNodeModal
-        isOpen={Boolean(node)}
+        isOpen={clickedNodeModalOpen}
         clickedNode={node}
         closeClickedGoalModal={closeClickedGoalModal}
-        handleAddSubgoal={handleAddSubgoal}
+        transitionSubgoalModal={transitionSubgoalModal}
         handleDeleteGoal={handleDeleteGoal}
         handleUpdateGoalComplete={handleUpdateGoalComplete}
+      />
+      <AddSubgoalModal
+        isOpen={addSubgoalModalOpen}
+        closeAddSubgoalModal={closeAddSubgoalModal}
+        handleAddSubgoal={handleAddSubgoal}
       />
     </Box>
   );

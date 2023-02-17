@@ -8,29 +8,19 @@ import {
   ModalOverlay,
   FormControl,
   FormLabel,
-  Input,
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import PropTypes from "prop-types";
 
 function ClickedNodeModal({
   isOpen,
   clickedNode,
   closeClickedGoalModal,
-  handleAddSubgoal,
+  transitionSubgoalModal,
   handleDeleteGoal,
   handleUpdateGoalComplete,
 }) {
-  const [name, setName] = useState("");
-
-  const handleAddSubgoalSubmit = (event) => {
-    event.preventDefault();
-    handleAddSubgoal(name);
-    setName("");
-  };
-
   const getUpdateButtonText = () => {
     if (clickedNode !== undefined) {
       return `Mark Node ${
@@ -43,7 +33,7 @@ function ClickedNodeModal({
     <Modal
       isOpen={isOpen}
       onClose={closeClickedGoalModal}
-      onSubmit={handleAddSubgoal}
+      onSubmit={transitionSubgoalModal}
     >
       <ModalOverlay />
       <ModalContent>
@@ -51,25 +41,14 @@ function ClickedNodeModal({
         <ModalBody>
           <FormControl>
             <FormLabel>Actions</FormLabel>
-            <Input
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
           </FormControl>
-          <Flex justifyContent="right">
-            <Button
-              mt={3}
-              size="sm"
-              onClick={handleAddSubgoalSubmit}
-              disabled={!name}
-              bg="orange.200"
-            >
-              Add Subgoal
-            </Button>
-          </Flex>
         </ModalBody>
         <ModalFooter>
-          <Flex alignItems="center" gap="2">
+          <Flex alignItems="center" gap="2" direction="column">
+            <Button size="sm" onClick={transitionSubgoalModal} bg="orange.200">
+              Add Subgoal
+            </Button>
+            <Spacer />
             <Button
               size="sm"
               bg={
@@ -96,7 +75,6 @@ ClickedNodeModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   // how to add clickedNode data type? shapeof?
   closeClickedGoalModal: PropTypes.func.isRequired,
-  handleAddSubgoal: PropTypes.func.isRequired,
   handleDeleteGoal: PropTypes.func.isRequired,
   handleUpdateGoalComplete: PropTypes.func.isRequired,
 };
