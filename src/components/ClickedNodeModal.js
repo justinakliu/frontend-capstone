@@ -4,10 +4,12 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  ModalHeader,
   ModalFooter,
   ModalOverlay,
   FormControl,
   FormLabel,
+  Text,
   Flex,
   Spacer,
 } from "@chakra-ui/react";
@@ -23,7 +25,7 @@ function ClickedNodeModal({
 }) {
   const getUpdateButtonText = () => {
     if (clickedNode !== undefined) {
-      return `Mark Node ${
+      return `Mark ${
         Boolean(clickedNode.data.complete) ? "Incomplete" : "Complete"
       }`;
     }
@@ -36,19 +38,10 @@ function ClickedNodeModal({
       onSubmit={transitionSubgoalModal}
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent padding="2" maxW="300px">
         <ModalCloseButton />
         <ModalBody>
-          <FormControl>
-            <FormLabel>Actions</FormLabel>
-          </FormControl>
-        </ModalBody>
-        <ModalFooter>
           <Flex alignItems="center" gap="2" direction="column">
-            <Button size="sm" onClick={transitionSubgoalModal} bg="orange.200">
-              Add Subgoal
-            </Button>
-            <Spacer />
             <Button
               size="sm"
               bg={
@@ -61,11 +54,15 @@ function ClickedNodeModal({
               {getUpdateButtonText()}
             </Button>
             <Spacer />
+            <Button size="sm" onClick={transitionSubgoalModal} bg="orange.200">
+              Add Subgoal
+            </Button>
+            <Spacer />
             <Button size="sm" bg="red.300" onClick={() => handleDeleteGoal()}>
-              Delete Node
+              Delete Goal
             </Button>
           </Flex>
-        </ModalFooter>
+        </ModalBody>
       </ModalContent>
     </Modal>
   );

@@ -108,7 +108,7 @@ function TaskTree({ goalId, addGoal, deleteGoal, updateGoalComplete }) {
         orientation={"vertical"}
         renderCustomNodeElement={renderSvgNode}
         separation={{ nonSiblings: 2, siblings: 2 }}
-        zoom={0.5}
+        zoom={0.8}
       />
 
       <ClickedNodeModal
