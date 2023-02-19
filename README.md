@@ -12,8 +12,8 @@ I created GoalTree to bridge the gap between big-picture planning and in-the-wee
 
 ## Features
 
-### My Goals Page
-<img width="1256" alt="Screen Shot 2023-02-13 at 10 24 45 PM" src="https://user-images.githubusercontent.com/87151448/218631425-1ea4ae23-88c6-4109-8226-264b476a90c7.png">
+### Home Page
+![Screen Recording 2023-02-19 at 5 59 23 PM](https://user-images.githubusercontent.com/87151448/219980532-faac027f-b534-405c-ac8c-a2dde9d7e7bf.gif)
 
 - Users can view all goals as well as create, delete and update goals
 - Color of the goal reflects the goal’s completion status
