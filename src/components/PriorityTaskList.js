@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { VStack, Flex, Box } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import PriorityTask from "./PriorityTask";
 
 function PriorityTaskList({
@@ -27,6 +27,7 @@ function PriorityTaskList({
         {priorityTasks.map((subgoal) => (
           <PriorityTask
             subgoal={subgoal}
+            key={subgoal.id}
             updateGoalComplete={updateGoalComplete}
             updateGoalPriority={updateGoalPriority}
           />
@@ -37,8 +38,9 @@ function PriorityTaskList({
 }
 
 PriorityTaskList.propTypes = {
-  rootGoals: PropTypes.array.isRequired,
-  handleUpdateGoalComplete: PropTypes.func.isRequired,
+  priorityTasks: PropTypes.array.isRequired,
+  updateGoalComplete: PropTypes.func.isRequired,
+  updateGoalPriority: PropTypes.func.isRequired,
 };
 
 export default PriorityTaskList;

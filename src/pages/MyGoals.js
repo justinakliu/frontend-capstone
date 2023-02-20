@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { Grid, GridItem, Spacer, Text, Flex, Button } from "@chakra-ui/react";
-
+import axios from "axios";
 import GoalList from "../components/GoalList.js";
 import PriorityTaskList from "../components/PriorityTaskList";
-
 import AddRootGoalModal from "../components/AddRootGoalModal.js";
-
-import axios from "axios";
 
 const getAllGoalsAPI = () => {
   return axios

@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Flex, Box, Spacer, Button } from "@chakra-ui/react";
 
@@ -39,6 +38,14 @@ const PriorityTask = ({ subgoal, updateGoalComplete, updateGoalPriority }) => {
 export default PriorityTask;
 
 PriorityTask.propTypes = {
-  id: PropTypes.number.isRequired,
-  handleUpdateGoalComplete: PropTypes.func.isRequired,
+  subgoal: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    parent_id: PropTypes.number,
+    complete: PropTypes.bool,
+    description: PropTypes.string,
+    priority: PropTypes.bool,
+  }),
+  updateGoalComplete: PropTypes.func.isRequired,
+  updateGoalPriority: PropTypes.func.isRequired,
 };

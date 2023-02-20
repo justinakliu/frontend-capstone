@@ -5,9 +5,9 @@ import Tree from "react-d3-tree";
 import ClickedNodeModal from "./ClickedNodeModal";
 import AddSubgoalModal from "./AddSubgoalModal";
 
-import "./Tree.css";
-
 import axios from "axios";
+
+import "./Tree.css";
 
 const getGoalTreeAPI = (id) => {
   return axios

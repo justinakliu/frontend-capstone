@@ -1,5 +1,5 @@
-import { Flex, Spacer, Heading, IconButton, Icon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { Flex, Spacer, Heading, IconButton, Icon } from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
 
 const NavBar = () => {

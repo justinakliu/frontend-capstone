@@ -36,4 +36,5 @@ export default Task;
 Task.propTypes = {
   id: PropTypes.number.isRequired,
   handleUpdateGoalComplete: PropTypes.func.isRequired,
+  handleUpdateGoalPriority: PropTypes.func.isRequired,
 };

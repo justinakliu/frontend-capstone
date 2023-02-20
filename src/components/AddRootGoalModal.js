@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import PropTypes from "prop-types";
 import {
   Button,
   Modal,
@@ -52,10 +52,10 @@ function AddRootGoalModal({ isOpen, onClose, onSubmit }) {
   );
 }
 
-// AddNodeModal.propTypes = {
-//   isOpen: PropTypes.bool.isRequired,
-//   onClose: PropTypes.func.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-// };
+AddRootGoalModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default AddRootGoalModal;

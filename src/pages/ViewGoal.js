@@ -1,14 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Flex, Text, Icon, IconButton } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
 import { ImTree } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import TaskTree from "../components/TaskTree.js";
 import TaskList from "../components/TaskList.js";
-
-import axios from "axios";
 
 const getGoalAPI = (id) => {
   return axios

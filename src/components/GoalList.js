@@ -27,6 +27,7 @@ function GoalList({ rootGoals, updateGoalComplete, deleteGoal }) {
         {rootGoals.map((goal) => (
           <Goal
             goal={goal}
+            key={goal.id}
             handleUpdateGoalComplete={handleUpdateGoalComplete}
             deleteGoal={deleteGoal}
           />
@@ -38,7 +39,8 @@ function GoalList({ rootGoals, updateGoalComplete, deleteGoal }) {
 
 GoalList.propTypes = {
   rootGoals: PropTypes.array.isRequired,
-  handleUpdateGoalComplete: PropTypes.func.isRequired,
+  updateGoalComplete: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
 };
 
 export default GoalList;

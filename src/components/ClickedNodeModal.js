@@ -4,12 +4,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalOverlay,
-  FormControl,
-  FormLabel,
-  Text,
   Flex,
   Spacer,
 } from "@chakra-ui/react";
@@ -70,10 +65,18 @@ function ClickedNodeModal({
 
 ClickedNodeModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  // how to add clickedNode data type? shapeof?
+  clickedNode: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    parent_id: PropTypes.number,
+    complete: PropTypes.bool,
+    description: PropTypes.string,
+    priority: PropTypes.bool,
+  }),
   closeClickedGoalModal: PropTypes.func.isRequired,
   handleDeleteGoal: PropTypes.func.isRequired,
   handleUpdateGoalComplete: PropTypes.func.isRequired,
+  transitionSubgoalModal: PropTypes.func.isRequired,
 };
 
 export default ClickedNodeModal;

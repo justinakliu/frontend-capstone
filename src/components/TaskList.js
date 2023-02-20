@@ -1,9 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { VStack, StackDivider } from "@chakra-ui/react";
-import Task from "./Task";
-
 import axios from "axios";
+import Task from "./Task";
 
 const getLeafGoalsAPI = (id) => {
   return axios
@@ -42,31 +41,30 @@ function TaskList({ goalId, updateGoalComplete, updateGoalPriority }) {
   };
 
   return (
-    <>
-      <VStack
-        divider={<StackDivider borderColor="gray.200" />}
-        spacing={2}
-        align="stretch"
-        ml={20}
-        mr={20}
-        mt={5}
-        mb={10}
-      >
-        {list.map((subgoal) => (
-          <Task
-            subgoal={subgoal}
-            handleUpdateGoalComplete={handleUpdateGoalComplete}
-            handleUpdateGoalPriority={handleUpdateGoalPriority}
-          />
-        ))}
-      </VStack>
-    </>
+    <VStack
+      divider={<StackDivider borderColor="gray.200" />}
+      spacing={2}
+      align="stretch"
+      ml={20}
+      mr={20}
+      mt={5}
+      mb={10}
+    >
+      {list.map((subgoal) => (
+        <Task
+          subgoal={subgoal}
+          handleUpdateGoalComplete={handleUpdateGoalComplete}
+          handleUpdateGoalPriority={handleUpdateGoalPriority}
+        />
+      ))}
+    </VStack>
   );
 }
 
 TaskList.propTypes = {
   goalId: PropTypes.string.isRequired,
-  handleUpdateGoalComplete: PropTypes.func.isRequired,
+  updateGoalComplete: PropTypes.func.isRequired,
+  updateGoalPriority: PropTypes.func.isRequired,
 };
 
 export default TaskList;

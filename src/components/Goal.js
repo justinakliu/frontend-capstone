@@ -1,7 +1,8 @@
 import React from "react";
-// import PropTypes from "prop-types";
-import { Flex, Box, Spacer, Button, Icon, IconButton } from "@chakra-ui/react";
+import PropTypes from "prop-types";
+
 import { useNavigate } from "react-router-dom";
+import { Flex, Box, Spacer, Button, Icon, IconButton } from "@chakra-ui/react";
 import { ImTree } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 
@@ -52,7 +53,15 @@ const Goal = ({ goal, handleUpdateGoalComplete, deleteGoal }) => {
 
 export default Goal;
 
-// Task.propTypes = {
-//   goal: PropTypes.number.isRequired,
-//   handleUpdateGoalComplete: PropTypes.func.isRequired,
-// };
+Goal.propTypes = {
+  goal: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    parent_id: PropTypes.number,
+    complete: PropTypes.bool,
+    description: PropTypes.string,
+    priority: PropTypes.bool,
+  }),
+  handleUpdateGoalComplete: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
+};

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Button,
   Modal,
@@ -10,8 +12,6 @@ import {
   Input,
   Flex,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import PropTypes from "prop-types";
 
 function AddSubgoalModal({ isOpen, closeAddSubgoalModal, handleAddSubgoal }) {
   const [name, setName] = useState("");
@@ -58,7 +58,6 @@ function AddSubgoalModal({ isOpen, closeAddSubgoalModal, handleAddSubgoal }) {
 
 AddSubgoalModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  // how to add clickedNode data type? shapeof?
   closeAddSubgoalModal: PropTypes.func.isRequired,
   handleAddSubgoal: PropTypes.func.isRequired,
 };
