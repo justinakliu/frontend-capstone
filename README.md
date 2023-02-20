@@ -31,7 +31,7 @@ I created GoalTree to bridge the gap between big-picture planning and in-the-wee
 
 <br>
 
-- Users update any node on the tree and the entire tree will automatically update (a parent node is defined as complete if all of its children are complete; a childless node is complete if it has been marked complete)
+- Users can update the completion status of a subgoal and see how the update affects the entire tree 
 
 <br>
 
