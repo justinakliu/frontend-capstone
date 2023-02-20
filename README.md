@@ -31,7 +31,7 @@ I created GoalTree to bridge the gap between big-picture planning and in-the-wee
 
 <br>
 
-- Users can update the completion status of a subgoal and see how the update affects the entire tree 
+- Users can update the completion status of a subgoal and see how the update affects the entire tree (this is the feature I'm most proud of! I implemented it using two recursive functions on the backend to update up and down the tree, starting from the updated node)
 
 <br>
 
