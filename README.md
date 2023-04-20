@@ -1,7 +1,7 @@
 # GoalTree
 
 ## Problem Space
-Popular productivity apps help users manage their to-do's but don't help users create comprehensive to-do lists for particular goals. What is the point of completing to-do lists if they are not aligned with goals?
+Popular productivity apps help users manage their to-do's but don't help users transform their goals into comprehensive to-do list. What is the point of completing to-do lists if they are not aligned with goals?
 
 I created GoalTree to bridge the gap between big-picture planning and task management. 
 
