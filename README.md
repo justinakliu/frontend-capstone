@@ -1,9 +1,11 @@
 # GoalTree
 
 ## Problem Space
-Popular productivity apps help users manage and view their to-do lists in countless ways, but don't help users create to-do lists for particular goals. In other words, task management is removed from planning. What is the point of crossing everything off a to-do list if the list isn't aligned with the end goal?
+Popular productivity apps help users manage their to-do's but don't help users create comprehensive to-do lists for particular goals. What is the point of completing to-do lists if they are not aligned with goals?
 
-I created GoalTree to bridge the gap between big-picture planning and in-the-weeds task management. GoalTree helps users thoroughly divide their goals into discrete and achievable tasks by using a tree data structure to conceptualize each goal as a tree of related subgoals. Users can generate to-do lists for each goal tree, which aggregates all the leaf nodes of a goal tree. The app allows users to easily toggle between tree and list view for a particular goal, instantaniously updating a to-do list when its corresponding goal tree is revised and vice-versa. <br>
+I created GoalTree to bridge the gap between big-picture planning and task management. GoalTree helps users thoroughly divide their goals into discrete and achievable tasks by using a tree data structure to conceptualize each goal as a tree of related subgoals. 
+
+Users can generate to-do lists for each goal tree, which aggregates all the leaf nodes of a goal tree. The app allows users to easily toggle between tree and list view for a particular goal, instantaniously updating a to-do list when its corresponding goal tree is revised and vice-versa. <br>
  
 ## Technologies
 * Frontend: Javascript, React, D3.js, HTML, CSS, Chakra UI
