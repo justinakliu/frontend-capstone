@@ -1,9 +1,9 @@
 # GoalTree
 
 ## Problem Space
-Popular to-do list apps help us manage tasks but don't help us create a comprehensive to-do list from a goal. What is the point of completing to-do lists that don't help us reach our end goals?
+Popular to-do list apps help users manage tasks but don't assist with creating comprehensive task lists for particular goals. In other words, task management is removed from big-picture planning. 
 
-I created GoalTree to bridge the gap between big-picture planning and task management. 
+I created GoalTree to bridge this gap. 
 
 - Users can build a tree from a goal by continuously dividing the goal into subgoals
 - Users can generate to-do a list for a goal, which aggregates all the leaf nodes of the corresponding tree
